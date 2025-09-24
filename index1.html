@@ -1,0 +1,2043 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MaJe Technologies - You think. We execute.</title>
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- Lenis Smooth Scrolling -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    /* CSS Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* CSS Variables */
+    :root {
+      --primary-blue: #2563EB;
+      --primary-blue-hover: #1D4ED8;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b7280;
+      --text-light: #9ca3af;
+      --bg-white: #ffffff;
+      --bg-gray: #f9fafb;
+      --border-light: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --container-max: 1200px;
+      --section-padding: 120px 0;
+      --logo-min: 200px;
+      --logo-preferred: 60vw;
+      --logo-max: 350px;
+      --shine-delay: 0.8s;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: var(--section-padding);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border-light);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-primary);
+      color: white;
+      border-color: var(--text-primary);
+    }
+
+    /* Logo Animation Styles */
+    .logo-intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .logo-intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .logo {
+      position: relative;
+      width: clamp(var(--logo-min), var(--logo-preferred), var(--logo-max));
+      max-width: 100vw;
+      margin: 0 auto;
+      line-height: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .shine {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .shine::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      animation: shine 2s ease forwards;
+      animation-delay: var(--shine-delay);
+    }
+
+    @keyframes shine {
+      to { left: 150%; }
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 1000;
+      padding: 1rem 0;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .navbar.visible {
+      transform: translateY(0);
+    }
+
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .navbar-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .navbar-nav a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .navbar-nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .svg-animations {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-svg-1 {
+      position: absolute;
+      top: 10%;
+      right: 8%;
+      width: 150px;
+      height: 150px;
+      opacity: 0.1;
+      animation: rotate 30s linear infinite;
+    }
+
+    .hero-svg-2 {
+      position: absolute;
+      bottom: 15%;
+      left: 8%;
+      width: 200px;
+      height: 100px;
+      opacity: 0.08;
+      animation: wave 12s ease-in-out infinite;
+    }
+
+    .hero-svg-3 {
+      position: absolute;
+      top: 60%;
+      right: 5%;
+      width: 120px;
+      height: 120px;
+      opacity: 0.06;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateX(0px) scaleY(1); }
+      50% { transform: translateX(5px) scaleY(1.05); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.06; }
+      50% { transform: scale(1.05); opacity: 0.1; }
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-text {
+      text-align: left;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .title-line {
+      display: block;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .title-line.highlight {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 400px;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .tech-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .tech-item i {
+      font-size: 2rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-item span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* About Section */
+    .about {
+      background: var(--bg-white);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .about-text p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-illustration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Services Section */
+    .services {
+      background: var(--bg-gray);
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border-light);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .service-card i {
+      font-size: 3rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Case Studies Section */
+    .case-studies {
+      background: var(--bg-white);
+    }
+
+    .case-studies h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .case-card {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .case-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .case-image {
+      height: 250px;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .case-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 2rem;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .case-card:hover .case-overlay {
+      transform: translateY(0);
+    }
+
+    /* Stats Section */
+    .stats {
+      background: var(--text-primary);
+      color: white;
+    }
+
+    .stats-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+
+    .stat-item p {
+      font-size: 1.125rem;
+      color: var(--text-light);
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background: var(--bg-gray);
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .testimonials-carousel {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scroll-behavior: smooth;
+    }
+
+    .testimonial-card {
+      min-width: 350px;
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--bg-white);
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .contact p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-primary);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .footer-logo {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--text-light);
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 1000px;
+      }
+      
+      .hero-content {
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .tech-stack {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .navbar-nav {
+        display: none;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero {
+        min-height: 100vh;
+        padding: 2rem 0;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+        padding: 0 1rem;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+
+      .tech-stack {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .tech-item {
+        padding: 1rem;
+      }
+
+      .tech-item i {
+        font-size: 1.5rem;
+      }
+
+      .tech-item span {
+        font-size: 0.8rem;
+      }
+
+      .hero-svg-1, .hero-svg-2, .hero-svg-3 {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .case-studies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .tech-stack {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+
+      .stats-content {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-card {
+        min-width: 280px;
+      }
+
+      .service-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .tech-stack {
+        max-width: 250px;
+      }
+
+      .tech-item {
+        padding: 0.8rem;
+      }
+
+      .service-card {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* SVG Animations */
+    @-webkit-keyframes animate-svg-stroke-1 {
+      0% { stroke-dashoffset: 322.052490234375px; stroke-dasharray: 322.052490234375px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 322.052490234375px; }
+    }
+    @keyframes animate-svg-stroke-1 {
+      0% { stroke-dashoffset: 322.052490234375px; stroke-dasharray: 322.052490234375px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 322.052490234375px; }
+    }
+    @-webkit-keyframes animate-svg-fill-1 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    @keyframes animate-svg-fill-1 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    .svg-elem-1 {
+      animation: animate-svg-stroke-1 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) 0s both,
+                 animate-svg-fill-1 0.6s cubic-bezier(0.47, 0, 0.745, 0.715) 0.7s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-2 {
+      0% { stroke-dashoffset: 202.61837768554688px; stroke-dasharray: 202.61837768554688px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 202.61837768554688px; }
+    }
+    @keyframes animate-svg-stroke-2 {
+      0% { stroke-dashoffset: 202.61837768554688px; stroke-dasharray: 202.61837768554688px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 202.61837768554688px; }
+    }
+    @-webkit-keyframes animate-svg-fill-2 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    @keyframes animate-svg-fill-2 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    .svg-elem-2 {
+      animation: animate-svg-stroke-2 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s both,
+                 animate-svg-fill-2 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-3 {
+      0% { stroke-dashoffset: 149.36752319335938px; stroke-dasharray: 149.36752319335938px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 149.36752319335938px; }
+    }
+    @keyframes animate-svg-stroke-3 {
+      0% { stroke-dashoffset: 149.36752319335938px; stroke-dasharray: 149.36752319335938px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 149.36752319335938px; }
+    }
+    @-webkit-keyframes animate-svg-fill-3 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    @keyframes animate-svg-fill-3 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    .svg-elem-3 {
+      animation: animate-svg-stroke-3 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.24s both,
+                 animate-svg-fill-3 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-4 {
+      0% { stroke-dashoffset: 202.66653442382812px; stroke-dasharray: 202.66653442382812px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 202.66653442382812px; }
+    }
+    @keyframes animate-svg-stroke-4 {
+      0% { stroke-dashoffset: 202.66653442382812px; stroke-dasharray: 202.66653442382812px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 202.66653442382812px; }
+    }
+    @-webkit-keyframes animate-svg-fill-4 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    @keyframes animate-svg-fill-4 {
+      0% { fill: transparent; }
+      100% { fill: rgb(19, 44, 65); }
+    }
+    .svg-elem-4 {
+      animation: animate-svg-stroke-4 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.36s both,
+                 animate-svg-fill-4 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.1s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-5 {
+      0% { stroke-dashoffset: 900.664794921875px; stroke-dasharray: 900.664794921875px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 900.664794921875px; }
+    }
+    @keyframes animate-svg-stroke-5 {
+      0% { stroke-dashoffset: 900.664794921875px; stroke-dasharray: 900.664794921875px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 900.664794921875px; }
+    }
+    @-webkit-keyframes animate-svg-fill-5 {
+      0% { fill: transparent; }
+      100% { fill: rgb(7, 35, 59); }
+    }
+    @keyframes animate-svg-fill-5 {
+      0% { fill: transparent; }
+      100% { fill: rgb(7, 35, 59); }
+    }
+    .svg-elem-5 {
+      animation: animate-svg-stroke-5 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.48s both,
+                 animate-svg-fill-5 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.2s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-6 {
+      0% { stroke-dashoffset: 1245.55859375px; stroke-dasharray: 1245.55859375px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 1245.55859375px; }
+    }
+    @keyframes animate-svg-stroke-6 {
+      0% { stroke-dashoffset: 1245.55859375px; stroke-dasharray: 1245.55859375px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 1245.55859375px; }
+    }
+    @-webkit-keyframes animate-svg-fill-6 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 0, 0); }
+    }
+    @keyframes animate-svg-fill-6 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 0, 0); }
+    }
+    .svg-elem-6 {
+      animation: animate-svg-stroke-6 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s both,
+                 animate-svg-fill-6 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.3s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-7 {
+      0% { stroke-dashoffset: 169.02169799804688px; stroke-dasharray: 169.02169799804688px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 169.02169799804688px; }
+    }
+    @keyframes animate-svg-stroke-7 {
+      0% { stroke-dashoffset: 169.02169799804688px; stroke-dasharray: 169.02169799804688px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 169.02169799804688px; }
+    }
+    @-webkit-keyframes animate-svg-fill-7 {
+      0% { fill: transparent; }
+      100% { fill: rgb(4, 86, 185); }
+    }
+    @keyframes animate-svg-fill-7 {
+      0% { fill: transparent; }
+      100% { fill: rgb(4, 86, 185); }
+    }
+    .svg-elem-7 {
+      animation: animate-svg-stroke-7 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.72s both,
+                 animate-svg-fill-7 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.4s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-8 {
+      0% { stroke-dashoffset: 97.94022369384766px; stroke-dasharray: 97.94022369384766px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 97.94022369384766px; }
+    }
+    @keyframes animate-svg-stroke-8 {
+      0% { stroke-dashoffset: 97.94022369384766px; stroke-dasharray: 97.94022369384766px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 97.94022369384766px; }
+    }
+    @-webkit-keyframes animate-svg-fill-8 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 132, 137); }
+    }
+    @keyframes animate-svg-fill-8 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 132, 137); }
+    }
+    .svg-elem-8 {
+      animation: animate-svg-stroke-8 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.84s both,
+                 animate-svg-fill-8 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.5s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-9 {
+      0% { stroke-dashoffset: 275.64874267578125px; stroke-dasharray: 275.64874267578125px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 275.64874267578125px; }
+    }
+    @keyframes animate-svg-stroke-9 {
+      0% { stroke-dashoffset: 275.64874267578125px; stroke-dasharray: 275.64874267578125px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 275.64874267578125px; }
+    }
+    @-webkit-keyframes animate-svg-fill-9 {
+      0% { fill: transparent; }
+      100% { fill: rgb(6, 86, 183); }
+    }
+    @keyframes animate-svg-fill-9 {
+      0% { fill: transparent; }
+      100% { fill: rgb(6, 86, 183); }
+    }
+    .svg-elem-9 {
+      animation: animate-svg-stroke-9 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.96s both,
+                 animate-svg-fill-9 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
+    }
+
+    @-webkit-keyframes animate-svg-stroke-10 {
+      0% { stroke-dashoffset: 271.4436950683594px; stroke-dasharray: 271.4436950683594px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 271.4436950683594px; }
+    }
+    @keyframes animate-svg-stroke-10 {
+      0% { stroke-dashoffset: 271.4436950683594px; stroke-dasharray: 271.4436950683594px; }
+      100% { stroke-dashoffset: 0; stroke-dasharray: 271.4436950683594px; }
+    }
+    @-webkit-keyframes animate-svg-fill-10 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 132, 136); }
+    }
+    @keyframes animate-svg-fill-10 {
+      0% { fill: transparent; }
+      100% { fill: rgb(0, 132, 136); }
+    }
+    .svg-elem-10 {
+      animation: animate-svg-stroke-10 1s cubic-bezier(0.47, 0, 0.745, 0.715) 1.08s both,
+                 animate-svg-fill-10 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.7s both;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 360px) {
+      :root {
+        --logo-min: 220px; /* Slightly smaller for tiny screens */
+        --logo-preferred: 85vw; /* Maximize logo size */
+      }
+      body {
+        padding: 6px 0; /* Minimal vertical padding */
+      }
+      .shine::after {
+        width: 60%;
+        animation-duration: 0.9s;
+      }
+    }
+
+    @media (min-width: 414px) {
+      :root {
+        --logo-min: 260px;
+        --logo-preferred: 75vw;
+      }
+      body {
+        padding: 12px 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --logo-preferred: 60vw;
+      }
+      body {
+        padding: 16px 0;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --logo-max: 350px;
+      }
+      body {
+        padding: 24px 0;
+      }
+      .logo {
+        max-width: 400px;
+      }
+      .shine::after {
+        width: 40%;
+        animation-duration: 1.2s;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .svg-elem-1, .svg-elem-2, .svg-elem-3, .svg-elem-4,
+      .svg-elem-5, .svg-elem-6, .svg-elem-7, .svg-elem-8,
+      .svg-elem-9, .svg-elem-10 {
+        animation: none;
+        fill: currentColor;
+        stroke-dashoffset: 0;
+      }
+      .shine::after {
+        animation: none;
+        display: none;
+      }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+      :root { --bg: #fff; }
+      .svg-elem-1, .svg-elem-2, .svg-elem-3, .svg-elem-4,
+      .svg-elem-5, .svg-elem-6, .svg-elem-7, .svg-elem-8,
+      .svg-elem-9, .svg-elem-10 {
+        fill: #000;
+        stroke: #000;
+      }
+    }
+
+    /* Debugging Styles (remove in production) */
+    /* body { outline: 1px solid red; } */
+    /* .logo { outline: 1px solid blue; } */
+    /* .logo svg { outline: 1px solid green; } */
+  </style>
+</head>
+<body>
+  <!-- Logo Intro Animation -->
+  <div class="logo-intro" id="logoIntro">
+    <div class="logo">
+    <svg viewBox="0 0 289 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated Logo">
+<path d="M105.355 69.7511V25.0621H118.889L133.696 44.6931H126.728L141.937 25.0621H155.069V69.7511H141.669V34.7101L143.746 39.6011L129.877 57.5571L115.539 38.9311L118.085 37.6581V69.7511H105.355Z" fill="#132C41" class="svg-elem-1"></path>
+<path d="M158.855 52.08C158.855 48.4107 159.538 45.1893 160.903 42.416C162.311 39.6427 164.21 37.5093 166.599 36.016C168.989 34.5227 171.655 33.776 174.599 33.776C177.117 33.776 179.314 34.288 181.191 35.312C183.111 36.336 184.583 37.68 185.607 39.344V34.288H196.551V70H185.607V64.944C184.541 66.608 183.047 67.952 181.127 68.976C179.25 70 177.053 70.512 174.535 70.512C171.634 70.512 168.989 69.7653 166.599 68.272C164.21 66.736 162.311 64.5813 160.903 61.808C159.538 58.992 158.855 55.7493 158.855 52.08ZM185.607 52.144C185.607 49.4133 184.839 47.2587 183.303 45.68C181.81 44.1013 179.975 43.312 177.799 43.312C175.623 43.312 173.767 44.1013 172.231 45.68C170.738 47.216 169.991 49.3493 169.991 52.08C169.991 54.8107 170.738 56.9867 172.231 58.608C173.767 60.1867 175.623 60.976 177.799 60.976C179.975 60.976 181.81 60.1867 183.303 58.608C184.839 57.0293 185.607 54.8747 185.607 52.144Z" fill="#132C41" class="svg-elem-2"></path>
+<path d="M231.001 25.072V55.664C231.001 60.4 229.657 64.048 226.969 66.608C224.324 69.168 220.74 70.448 216.217 70.448C211.481 70.448 207.684 69.104 204.825 66.416C201.967 63.728 200.537 59.9093 200.537 54.96H211.417C211.417 56.8373 211.801 58.2667 212.569 59.248C213.337 60.1867 214.447 60.656 215.897 60.656C217.22 60.656 218.244 60.2293 218.969 59.376C219.695 58.5227 220.057 57.2853 220.057 55.664V25.072H231.001Z" fill="#132C41" class="svg-elem-3"></path>
+<path d="M271.664 51.568C271.664 52.592 271.6 53.6587 271.472 54.768H246.704C246.874 56.9867 247.578 58.6933 248.816 59.888C250.096 61.04 251.653 61.616 253.488 61.616C256.218 61.616 258.117 60.464 259.184 58.16H270.832C270.234 60.5067 269.146 62.6187 267.568 64.496C266.032 66.3733 264.09 67.8453 261.744 68.912C259.397 69.9787 256.773 70.512 253.872 70.512C250.373 70.512 247.258 69.7653 244.528 68.272C241.797 66.7787 239.664 64.6453 238.128 61.872C236.592 59.0987 235.824 55.856 235.824 52.144C235.824 48.432 236.57 45.1893 238.064 42.416C239.6 39.6427 241.733 37.5093 244.464 36.016C247.194 34.5227 250.33 33.776 253.872 33.776C257.328 33.776 260.4 34.5013 263.088 35.952C265.776 37.4027 267.866 39.472 269.36 42.16C270.896 44.848 271.664 47.984 271.664 51.568ZM260.464 48.688C260.464 46.8107 259.824 45.3173 258.544 44.208C257.264 43.0987 255.664 42.544 253.744 42.544C251.909 42.544 250.352 43.0773 249.072 44.144C247.834 45.2107 247.066 46.7253 246.768 48.688H260.464Z" fill="#132C41" class="svg-elem-4"></path>
+<path d="M114.052 75.1327V77.2717H109.797V91.1177H107.175V77.2717H102.897V75.1327H114.052ZM119.329 77.2487V81.9407H124.849V84.0797H119.329V88.9787H125.539V91.1177H116.707V75.1097H125.539V77.2487H119.329ZM127.895 83.0907C127.895 81.5267 128.255 80.1237 128.976 78.8817C129.712 77.6397 130.701 76.6737 131.943 75.9837C133.2 75.2783 134.573 74.9257 136.06 74.9257C137.762 74.9257 139.272 75.3473 140.591 76.1907C141.925 77.0187 142.891 78.1993 143.489 79.7327H140.338C139.924 78.8893 139.349 78.2607 138.613 77.8467C137.877 77.4327 137.026 77.2257 136.06 77.2257C135.002 77.2257 134.059 77.4633 133.231 77.9387C132.403 78.414 131.751 79.0963 131.276 79.9857C130.816 80.875 130.586 81.91 130.586 83.0907C130.586 84.2713 130.816 85.3063 131.276 86.1957C131.751 87.085 132.403 87.775 133.231 88.2657C134.059 88.741 135.002 88.9787 136.06 88.9787C137.026 88.9787 137.877 88.7717 138.613 88.3577C139.349 87.9437 139.924 87.315 140.338 86.4717H143.489C142.891 88.005 141.925 89.1857 140.591 90.0137C139.272 90.8417 137.762 91.2557 136.06 91.2557C134.557 91.2557 133.185 90.9107 131.943 90.2207C130.701 89.5153 129.712 88.5417 128.976 87.2997C128.255 86.0577 127.895 84.6547 127.895 83.0907ZM159.323 75.1327V91.1177H156.701V84.1257H149.18V91.1177H146.558V75.1327H149.18V81.9867H156.701V75.1327H159.323ZM175.908 91.1177H173.286L165.397 79.1807V91.1177H162.775V75.1097H165.397L173.286 87.0237V75.1097H175.908V91.1177ZM186.642 91.2787C185.155 91.2787 183.782 90.9337 182.525 90.2437C181.283 89.5383 180.294 88.5647 179.558 87.3227C178.837 86.0653 178.477 84.6547 178.477 83.0907C178.477 81.5267 178.837 80.1237 179.558 78.8817C180.294 77.6397 181.283 76.6737 182.525 75.9837C183.782 75.2783 185.155 74.9257 186.642 74.9257C188.145 74.9257 189.517 75.2783 190.759 75.9837C192.016 76.6737 193.005 77.6397 193.726 78.8817C194.447 80.1237 194.807 81.5267 194.807 83.0907C194.807 84.6547 194.447 86.0653 193.726 87.3227C193.005 88.5647 192.016 89.5383 190.759 90.2437C189.517 90.9337 188.145 91.2787 186.642 91.2787ZM186.642 89.0017C187.7 89.0017 188.643 88.764 189.471 88.2887C190.299 87.798 190.943 87.108 191.403 86.2187C191.878 85.314 192.116 84.2713 192.116 83.0907C192.116 81.91 191.878 80.875 191.403 79.9857C190.943 79.0963 190.299 78.414 189.471 77.9387C188.643 77.4633 187.7 77.2257 186.642 77.2257C185.584 77.2257 184.641 77.4633 183.813 77.9387C182.985 78.414 182.333 79.0963 181.858 79.9857C181.398 80.875 181.168 81.91 181.168 83.0907C181.168 84.2713 181.398 85.314 181.858 86.2187C182.333 87.108 182.985 87.798 183.813 88.2887C184.641 88.764 185.584 89.0017 186.642 89.0017ZM200.009 89.0017H205.414V91.1177H197.387V75.1327H200.009V89.0017ZM214.898 91.2787C213.411 91.2787 212.038 90.9337 210.781 90.2437C209.539 89.5383 208.55 88.5647 207.814 87.3227C207.093 86.0653 206.733 84.6547 206.733 83.0907C206.733 81.5267 207.093 80.1237 207.814 78.8817C208.55 77.6397 209.539 76.6737 210.781 75.9837C212.038 75.2783 213.411 74.9257 214.898 74.9257C216.401 74.9257 217.773 75.2783 219.015 75.9837C220.272 76.6737 221.261 77.6397 221.982 78.8817C222.703 80.1237 223.063 81.5267 223.063 83.0907C223.063 84.6547 222.703 86.0653 221.982 87.3227C221.261 88.5647 220.272 89.5383 219.015 90.2437C217.773 90.9337 216.401 91.2787 214.898 91.2787ZM214.898 89.0017C215.956 89.0017 216.899 88.764 217.727 88.2887C218.555 87.798 219.199 87.108 219.659 86.2187C220.134 85.314 220.372 84.2713 220.372 83.0907C220.372 81.91 220.134 80.875 219.659 79.9857C219.199 79.0963 218.555 78.414 217.727 77.9387C216.899 77.4633 215.956 77.2257 214.898 77.2257C213.84 77.2257 212.897 77.4633 212.069 77.9387C211.241 78.414 210.589 79.0963 210.114 79.9857C209.654 80.875 209.424 81.91 209.424 83.0907C209.424 84.2713 209.654 85.314 210.114 86.2187C210.589 87.108 211.241 87.798 212.069 88.2887C212.897 88.764 213.84 89.0017 214.898 89.0017ZM237.212 79.7327C236.798 78.9353 236.223 78.3373 235.487 77.9387C234.751 77.5247 233.9 77.3177 232.934 77.3177C231.876 77.3177 230.933 77.5553 230.105 78.0307C229.277 78.506 228.625 79.1807 228.15 80.0547C227.69 80.9287 227.46 81.9407 227.46 83.0907C227.46 84.2407 227.69 85.2603 228.15 86.1497C228.625 87.0237 229.277 87.6983 230.105 88.1737C230.933 88.649 231.876 88.8867 232.934 88.8867C234.36 88.8867 235.518 88.488 236.407 87.6907C237.296 86.8933 237.841 85.8123 238.04 84.4477H232.037V82.3547H240.846V84.4017C240.677 85.6437 240.233 86.786 239.512 87.8287C238.807 88.8713 237.879 89.707 236.729 90.3357C235.594 90.949 234.329 91.2557 232.934 91.2557C231.431 91.2557 230.059 90.9107 228.817 90.2207C227.575 89.5153 226.586 88.5417 225.85 87.2997C225.129 86.0577 224.769 84.6547 224.769 83.0907C224.769 81.5267 225.129 80.1237 225.85 78.8817C226.586 77.6397 227.575 76.6737 228.817 75.9837C230.074 75.2783 231.447 74.9257 232.934 74.9257C234.636 74.9257 236.146 75.3473 237.465 76.1907C238.799 77.0187 239.765 78.1993 240.363 79.7327H237.212ZM246.054 75.1327V91.1177H243.432V75.1327H246.054ZM252.118 77.2487V81.9407H257.638V84.0797H252.118V88.9787H258.328V91.1177H249.496V75.1097H258.328V77.2487H252.118ZM266.825 91.2787C265.752 91.2787 264.786 91.0947 263.927 90.7267C263.068 90.3433 262.394 89.8067 261.903 89.1167C261.412 88.4267 261.167 87.6217 261.167 86.7017H263.973C264.034 87.3917 264.303 87.959 264.778 88.4037C265.269 88.8483 265.951 89.0707 266.825 89.0707C267.73 89.0707 268.435 88.856 268.941 88.4267C269.447 87.982 269.7 87.4147 269.7 86.7247C269.7 86.188 269.539 85.751 269.217 85.4137C268.91 85.0763 268.519 84.8157 268.044 84.6317C267.584 84.4477 266.94 84.2483 266.112 84.0337C265.069 83.7577 264.218 83.4817 263.559 83.2057C262.915 82.9143 262.363 82.4697 261.903 81.8717C261.443 81.2737 261.213 80.4763 261.213 79.4797C261.213 78.5597 261.443 77.7547 261.903 77.0647C262.363 76.3747 263.007 75.8457 263.835 75.4777C264.663 75.1097 265.621 74.9257 266.71 74.9257C268.259 74.9257 269.524 75.3167 270.505 76.0987C271.502 76.8653 272.054 77.9233 272.161 79.2727H269.263C269.217 78.69 268.941 78.1917 268.435 77.7777C267.929 77.3637 267.262 77.1567 266.434 77.1567C265.683 77.1567 265.069 77.3483 264.594 77.7317C264.119 78.115 263.881 78.667 263.881 79.3877C263.881 79.8783 264.027 80.2847 264.318 80.6067C264.625 80.9133 265.008 81.1587 265.468 81.3427C265.928 81.5267 266.557 81.726 267.354 81.9407C268.412 82.232 269.271 82.5233 269.93 82.8147C270.605 83.106 271.172 83.5583 271.632 84.1717C272.107 84.7697 272.345 85.5747 272.345 86.5867C272.345 87.3993 272.123 88.166 271.678 88.8867C271.249 89.6073 270.612 90.19 269.769 90.6347C268.941 91.064 267.96 91.2787 266.825 91.2787Z" fill="#07233B" class="svg-elem-5"></path>
+<path d="M2.0791 108.032L6.06348 114.921L10.0811 108.032H10.8779L6.39551 115.544V120.118H5.72314V115.544L1.24072 108.032H2.0791ZM11.5294 115.785V115.469C11.5294 114.811 11.6235 114.207 11.8116 113.66C12.0053 113.112 12.2764 112.639 12.6251 112.24C12.9737 111.836 13.3888 111.524 13.8702 111.302C14.3572 111.081 14.8967 110.97 15.4888 110.97C16.081 110.97 16.6205 111.081 17.1075 111.302C17.5945 111.524 18.0123 111.836 18.3609 112.24C18.7151 112.639 18.9862 113.112 19.1744 113.66C19.3625 114.207 19.4566 114.811 19.4566 115.469V115.785C19.4566 116.443 19.3625 117.046 19.1744 117.594C18.9862 118.142 18.7179 118.618 18.3692 119.022C18.0206 119.42 17.6028 119.73 17.1158 119.952C16.6344 120.173 16.0976 120.284 15.5054 120.284C14.9078 120.284 14.3655 120.173 13.8785 119.952C13.3971 119.73 12.9792 119.42 12.6251 119.022C12.2764 118.618 12.0053 118.142 11.8116 117.594C11.6235 117.046 11.5294 116.443 11.5294 115.785ZM12.1934 115.469V115.785C12.1934 116.305 12.2654 116.8 12.4093 117.27C12.5587 117.735 12.7745 118.15 13.0567 118.516C13.3389 118.875 13.6848 119.16 14.0943 119.371C14.5038 119.575 14.9742 119.678 15.5054 119.678C16.0256 119.678 16.4905 119.575 16.9 119.371C17.3095 119.16 17.6526 118.875 17.9293 118.516C18.2115 118.15 18.4246 117.735 18.5684 117.27C18.7179 116.8 18.7926 116.305 18.7926 115.785V115.469C18.7926 114.96 18.7179 114.473 18.5684 114.008C18.4246 113.543 18.2115 113.128 17.9293 112.763C17.6471 112.398 17.3012 112.11 16.8917 111.9C16.4822 111.684 16.0146 111.576 15.4888 111.576C14.9631 111.576 14.4955 111.684 14.086 111.9C13.682 112.11 13.3362 112.398 13.0484 112.763C12.7662 113.128 12.5531 113.543 12.4093 114.008C12.2654 114.473 12.1934 114.96 12.1934 115.469ZM27.6784 118.042V111.136H28.3424V120.118H27.6867L27.6784 118.042ZM27.7946 116.515L28.2262 116.499C28.2262 117.046 28.1571 117.55 28.0187 118.009C27.8859 118.469 27.6756 118.87 27.3879 119.213C27.1056 119.55 26.7404 119.813 26.2921 120.001C25.8439 120.19 25.3071 120.284 24.6818 120.284C24.2446 120.284 23.8434 120.223 23.4782 120.101C23.1185 119.974 22.8058 119.775 22.5402 119.503C22.2801 119.232 22.0781 118.878 21.9342 118.441C21.7959 118.004 21.7267 117.475 21.7267 116.855V111.136H22.3825V116.872C22.3825 117.392 22.4406 117.832 22.5568 118.192C22.6785 118.552 22.8446 118.839 23.0548 119.055C23.2651 119.271 23.5114 119.429 23.7936 119.528C24.0758 119.622 24.383 119.669 24.715 119.669C25.4897 119.669 26.1012 119.52 26.5495 119.221C27.0032 118.922 27.3242 118.532 27.5124 118.051C27.7005 117.569 27.7946 117.057 27.7946 116.515ZM38.7181 111.136V111.734H34.4183V111.136H38.7181ZM36.0784 108.762H36.7425V117.951C36.7425 118.433 36.8006 118.798 36.9168 119.047C37.0386 119.29 37.1963 119.456 37.39 119.545C37.5892 119.628 37.8022 119.669 38.0291 119.669C38.1896 119.669 38.3363 119.661 38.4691 119.645C38.6074 119.628 38.7458 119.609 38.8841 119.586L38.9422 120.167C38.8205 120.206 38.6627 120.234 38.4691 120.25C38.2754 120.273 38.1038 120.284 37.9544 120.284C37.5781 120.284 37.2488 120.214 36.9666 120.076C36.6844 119.938 36.4658 119.7 36.3109 119.362C36.1559 119.019 36.0784 118.549 36.0784 117.951V108.762ZM41.7685 107.368V120.118H41.1127V107.368H41.7685ZM41.6439 114.938L41.3202 114.556C41.37 114.08 41.4862 113.626 41.6688 113.195C41.857 112.763 42.1033 112.381 42.4076 112.049C42.7175 111.717 43.0772 111.454 43.4867 111.261C43.9018 111.067 44.3583 110.97 44.8563 110.97C45.3046 110.97 45.7058 111.034 46.06 111.161C46.4141 111.283 46.713 111.477 46.9564 111.742C47.2055 112.008 47.3936 112.351 47.5209 112.771C47.6482 113.187 47.7118 113.693 47.7118 114.291V120.118H47.0561V114.291C47.0561 113.582 46.9592 113.034 46.7655 112.647C46.5718 112.254 46.3007 111.977 45.952 111.817C45.609 111.656 45.2077 111.576 44.7484 111.576C44.2172 111.576 43.7579 111.695 43.3705 111.933C42.9887 112.166 42.6732 112.462 42.4242 112.821C42.1752 113.175 41.9843 113.543 41.8515 113.925C41.7242 114.307 41.655 114.645 41.6439 114.938ZM51.3681 111.136V120.118H50.7041V111.136H51.3681ZM50.4966 108.414C50.4966 108.264 50.5464 108.137 50.646 108.032C50.7511 107.921 50.8839 107.866 51.0444 107.866C51.1994 107.866 51.3294 107.921 51.4346 108.032C51.5397 108.137 51.5923 108.264 51.5923 108.414C51.5923 108.563 51.5397 108.69 51.4346 108.795C51.3294 108.895 51.1994 108.945 51.0444 108.945C50.8839 108.945 50.7511 108.895 50.646 108.795C50.5464 108.69 50.4966 108.563 50.4966 108.414ZM55.0577 113.054V120.118H54.4019V111.136H55.0494L55.0577 113.054ZM54.9332 114.938L54.6094 114.556C54.6592 114.08 54.7754 113.626 54.9581 113.195C55.1462 112.763 55.3925 112.381 55.6968 112.049C56.0067 111.717 56.3664 111.454 56.7759 111.261C57.191 111.067 57.6475 110.97 58.1456 110.97C58.5938 110.97 58.995 111.034 59.3492 111.161C59.7033 111.283 60.0022 111.477 60.2457 111.742C60.4947 112.008 60.6828 112.351 60.8101 112.771C60.9374 113.187 61.001 113.693 61.001 114.291V120.118H60.3453V114.291C60.3453 113.582 60.2484 113.034 60.0547 112.647C59.8611 112.254 59.5899 111.977 59.2413 111.817C58.8982 111.656 58.497 111.576 58.0377 111.576C57.5064 111.576 57.0471 111.695 56.6597 111.933C56.2779 112.166 55.9625 112.462 55.7134 112.821C55.4644 113.175 55.2735 113.543 55.1407 113.925C55.0134 114.307 54.9442 114.645 54.9332 114.938ZM64.5661 107.368V120.118H63.902V107.368H64.5661ZM70.2853 111.136L65.9191 115.287L64.3751 116.689L64.2174 116.108L65.5704 114.755L69.4054 111.136H70.2853ZM69.754 120.118L65.6701 115.22L66.0602 114.672L70.5675 120.118H69.754ZM72.0573 119.628C72.0573 119.478 72.1099 119.351 72.2151 119.246C72.3202 119.135 72.453 119.08 72.6135 119.08C72.7795 119.08 72.9151 119.135 73.0202 119.246C73.1254 119.351 73.1779 119.478 73.1779 119.628C73.1779 119.783 73.1254 119.913 73.0202 120.018C72.9151 120.123 72.7795 120.176 72.6135 120.176C72.453 120.176 72.3202 120.123 72.2151 120.018C72.1099 119.913 72.0573 119.783 72.0573 119.628ZM83.703 117.204L86.4755 108.032H87.0897L86.434 110.29L83.4955 120.118H82.931L83.703 117.204ZM80.3246 108.032L82.7152 117.171L83.4291 120.118H82.8065L79.6107 108.032H80.3246ZM90.8832 117.171L93.2489 108.032H93.9545L90.767 120.118H90.1444L90.8832 117.171ZM87.1312 108.032L89.8705 117.204L90.6425 120.118H90.078L87.181 110.29L86.517 108.032H87.1312ZM99.0551 120.284C98.4907 120.284 97.9677 120.176 97.4863 119.96C97.0048 119.739 96.5843 119.431 96.2246 119.039C95.8649 118.64 95.5826 118.17 95.3779 117.627C95.1787 117.085 95.0791 116.49 95.0791 115.843V115.478C95.0791 114.808 95.1787 114.199 95.3779 113.651C95.5826 113.098 95.8593 112.622 96.208 112.224C96.5566 111.82 96.9578 111.51 97.4116 111.294C97.8709 111.078 98.3606 110.97 98.8808 110.97C99.4065 110.97 99.8824 111.067 100.309 111.261C100.735 111.454 101.1 111.726 101.404 112.074C101.709 112.423 101.941 112.838 102.102 113.319C102.262 113.801 102.342 114.332 102.342 114.913V115.469H95.4941V114.863H101.686V114.755C101.681 114.191 101.565 113.668 101.338 113.187C101.116 112.705 100.798 112.318 100.383 112.024C99.9682 111.726 99.4674 111.576 98.8808 111.576C98.4104 111.576 97.9816 111.676 97.5942 111.875C97.2124 112.074 96.8831 112.351 96.6064 112.705C96.3297 113.054 96.1167 113.466 95.9672 113.942C95.8178 114.412 95.7431 114.924 95.7431 115.478V115.843C95.7431 116.374 95.8261 116.872 95.9921 117.337C96.1582 117.802 96.3906 118.211 96.6894 118.565C96.9882 118.914 97.3396 119.188 97.7436 119.387C98.1476 119.586 98.5903 119.686 99.0717 119.686C99.5919 119.686 100.068 119.595 100.499 119.412C100.931 119.229 101.324 118.909 101.678 118.449L102.11 118.773C101.911 119.061 101.67 119.318 101.388 119.545C101.105 119.772 100.771 119.952 100.383 120.084C100.001 120.217 99.5587 120.284 99.0551 120.284ZM112.162 120.284C111.597 120.284 111.074 120.176 110.593 119.96C110.111 119.739 109.691 119.431 109.331 119.039C108.971 118.64 108.689 118.17 108.484 117.627C108.285 117.085 108.186 116.49 108.186 115.843V115.478C108.186 114.808 108.285 114.199 108.484 113.651C108.689 113.098 108.966 112.622 109.315 112.224C109.663 111.82 110.064 111.51 110.518 111.294C110.977 111.078 111.467 110.97 111.987 110.97C112.513 110.97 112.989 111.067 113.415 111.261C113.841 111.454 114.206 111.726 114.511 112.074C114.815 112.423 115.048 112.838 115.208 113.319C115.369 113.801 115.449 114.332 115.449 114.913V115.469H108.601V114.863H114.793V114.755C114.788 114.191 114.671 113.668 114.444 113.187C114.223 112.705 113.905 112.318 113.49 112.024C113.075 111.726 112.574 111.576 111.987 111.576C111.517 111.576 111.088 111.676 110.701 111.875C110.319 112.074 109.99 112.351 109.713 112.705C109.436 113.054 109.223 113.466 109.074 113.942C108.924 114.412 108.85 114.924 108.85 115.478V115.843C108.85 116.374 108.933 116.872 109.099 117.337C109.265 117.802 109.497 118.211 109.796 118.565C110.095 118.914 110.446 119.188 110.85 119.387C111.254 119.586 111.697 119.686 112.178 119.686C112.699 119.686 113.174 119.595 113.606 119.412C114.038 119.229 114.431 118.909 114.785 118.449L115.216 118.773C115.017 119.061 114.776 119.318 114.494 119.545C114.212 119.772 113.877 119.952 113.49 120.084C113.108 120.217 112.665 120.284 112.162 120.284ZM117.677 111.136L120.375 114.979L123.065 111.136H123.87L120.757 115.519L124.028 120.118H123.231L120.375 116.067L117.52 120.118H116.723L119.985 115.519L116.881 111.136H117.677ZM129.186 120.284C128.622 120.284 128.099 120.176 127.617 119.96C127.136 119.739 126.715 119.431 126.356 119.039C125.996 118.64 125.714 118.17 125.509 117.627C125.31 117.085 125.21 116.49 125.21 115.843V115.478C125.21 114.808 125.31 114.199 125.509 113.651C125.714 113.098 125.991 112.622 126.339 112.224C126.688 111.82 127.089 111.51 127.543 111.294C128.002 111.078 128.492 110.97 129.012 110.97C129.538 110.97 130.014 111.067 130.44 111.261C130.866 111.454 131.231 111.726 131.535 112.074C131.84 112.423 132.072 112.838 132.233 113.319C132.393 113.801 132.473 114.332 132.473 114.913V115.469H125.625V114.863H131.818V114.755C131.812 114.191 131.696 113.668 131.469 113.187C131.248 112.705 130.929 112.318 130.514 112.024C130.099 111.726 129.599 111.576 129.012 111.576C128.542 111.576 128.113 111.676 127.725 111.875C127.344 112.074 127.014 112.351 126.738 112.705C126.461 113.054 126.248 113.466 126.098 113.942C125.949 114.412 125.874 114.924 125.874 115.478V115.843C125.874 116.374 125.957 116.872 126.123 117.337C126.289 117.802 126.522 118.211 126.821 118.565C127.119 118.914 127.471 119.188 127.875 119.387C128.279 119.586 128.721 119.686 129.203 119.686C129.723 119.686 130.199 119.595 130.631 119.412C131.062 119.229 131.455 118.909 131.809 118.449L132.241 118.773C132.042 119.061 131.801 119.318 131.519 119.545C131.237 119.772 130.902 119.952 130.514 120.084C130.133 120.217 129.69 120.284 129.186 120.284ZM137.848 119.678C138.296 119.678 138.72 119.595 139.118 119.429C139.522 119.263 139.857 119.011 140.122 118.673C140.394 118.33 140.546 117.896 140.579 117.37H141.226C141.199 117.968 141.027 118.485 140.712 118.922C140.396 119.354 139.99 119.689 139.492 119.927C138.994 120.165 138.446 120.284 137.848 120.284C137.25 120.284 136.716 120.173 136.246 119.952C135.781 119.73 135.391 119.418 135.076 119.014C134.76 118.61 134.519 118.137 134.353 117.594C134.193 117.046 134.113 116.449 134.113 115.801V115.453C134.113 114.805 134.193 114.21 134.353 113.668C134.519 113.12 134.76 112.644 135.076 112.24C135.391 111.836 135.778 111.524 136.238 111.302C136.702 111.081 137.234 110.97 137.831 110.97C138.435 110.97 138.988 111.095 139.492 111.344C139.995 111.587 140.402 111.944 140.712 112.415C141.027 112.879 141.199 113.449 141.226 114.124H140.579C140.551 113.571 140.41 113.106 140.156 112.73C139.901 112.354 139.569 112.069 139.16 111.875C138.75 111.676 138.307 111.576 137.831 111.576C137.3 111.576 136.841 111.679 136.453 111.883C136.066 112.088 135.748 112.37 135.499 112.73C135.25 113.084 135.067 113.496 134.951 113.967C134.835 114.432 134.777 114.927 134.777 115.453V115.801C134.777 116.332 134.835 116.833 134.951 117.304C135.067 117.769 135.25 118.178 135.499 118.532C135.748 118.886 136.066 119.166 136.453 119.371C136.846 119.575 137.311 119.678 137.848 119.678ZM149.465 118.042V111.136H150.129V120.118H149.473L149.465 118.042ZM149.581 116.515L150.013 116.499C150.013 117.046 149.943 117.55 149.805 118.009C149.672 118.469 149.462 118.87 149.174 119.213C148.892 119.55 148.527 119.813 148.079 120.001C147.63 120.19 147.094 120.284 146.468 120.284C146.031 120.284 145.63 120.223 145.265 120.101C144.905 119.974 144.592 119.775 144.327 119.503C144.067 119.232 143.865 118.878 143.721 118.441C143.582 118.004 143.513 117.475 143.513 116.855V111.136H144.169V116.872C144.169 117.392 144.227 117.832 144.343 118.192C144.465 118.552 144.631 118.839 144.841 119.055C145.052 119.271 145.298 119.429 145.58 119.528C145.862 119.622 146.169 119.669 146.501 119.669C147.276 119.669 147.888 119.52 148.336 119.221C148.79 118.922 149.111 118.532 149.299 118.051C149.487 117.569 149.581 117.057 149.581 116.515ZM156.234 111.136V111.734H151.934V111.136H156.234ZM153.594 108.762H154.258V117.951C154.258 118.433 154.316 118.798 154.433 119.047C154.554 119.29 154.712 119.456 154.906 119.545C155.105 119.628 155.318 119.669 155.545 119.669C155.705 119.669 155.852 119.661 155.985 119.645C156.123 119.628 156.262 119.609 156.4 119.586L156.458 120.167C156.336 120.206 156.179 120.234 155.985 120.25C155.791 120.273 155.62 120.284 155.47 120.284C155.094 120.284 154.765 120.214 154.482 120.076C154.2 119.938 153.982 119.7 153.827 119.362C153.672 119.019 153.594 118.549 153.594 117.951V108.762ZM161.957 120.284C161.393 120.284 160.87 120.176 160.388 119.96C159.907 119.739 159.486 119.431 159.127 119.039C158.767 118.64 158.485 118.17 158.28 117.627C158.081 117.085 157.981 116.49 157.981 115.843V115.478C157.981 114.808 158.081 114.199 158.28 113.651C158.485 113.098 158.761 112.622 159.11 112.224C159.459 111.82 159.86 111.51 160.314 111.294C160.773 111.078 161.263 110.97 161.783 110.97C162.309 110.97 162.784 111.067 163.211 111.261C163.637 111.454 164.002 111.726 164.306 112.074C164.611 112.423 164.843 112.838 165.004 113.319C165.164 113.801 165.244 114.332 165.244 114.913V115.469H158.396V114.863H164.588V114.755C164.583 114.191 164.467 113.668 164.24 113.187C164.018 112.705 163.7 112.318 163.285 112.024C162.87 111.726 162.369 111.576 161.783 111.576C161.312 111.576 160.884 111.676 160.496 111.875C160.114 112.074 159.785 112.351 159.508 112.705C159.232 113.054 159.019 113.466 158.869 113.942C158.72 114.412 158.645 114.924 158.645 115.478V115.843C158.645 116.374 158.728 116.872 158.894 117.337C159.06 117.802 159.293 118.211 159.591 118.565C159.89 118.914 160.242 119.188 160.646 119.387C161.05 119.586 161.492 119.686 161.974 119.686C162.494 119.686 162.97 119.595 163.401 119.412C163.833 119.229 164.226 118.909 164.58 118.449L165.012 118.773C164.813 119.061 164.572 119.318 164.29 119.545C164.007 119.772 163.673 119.952 163.285 120.084C162.903 120.217 162.461 120.284 161.957 120.284ZM167.299 119.628C167.299 119.478 167.351 119.351 167.456 119.246C167.561 119.135 167.694 119.08 167.855 119.08C168.021 119.08 168.156 119.135 168.261 119.246C168.367 119.351 168.419 119.478 168.419 119.628C168.419 119.783 168.367 119.913 168.261 120.018C168.156 120.123 168.021 120.176 167.855 120.176C167.694 120.176 167.561 120.123 167.456 120.018C167.351 119.913 167.299 119.783 167.299 119.628ZM180.04 114.207H176.421L176.404 113.602H179.434C180.109 113.602 180.679 113.51 181.144 113.328C181.609 113.145 181.96 112.871 182.198 112.506C182.436 112.135 182.555 111.673 182.555 111.12C182.555 110.566 182.433 110.107 182.19 109.742C181.946 109.376 181.581 109.103 181.094 108.92C180.613 108.737 180.009 108.646 179.285 108.646H176.628V120.118H175.956V108.032H179.285C179.899 108.032 180.449 108.093 180.936 108.214C181.423 108.336 181.836 108.527 182.173 108.787C182.516 109.042 182.779 109.365 182.962 109.758C183.144 110.151 183.236 110.616 183.236 111.153C183.236 111.651 183.136 112.099 182.937 112.498C182.738 112.896 182.45 113.222 182.074 113.477C181.703 113.726 181.249 113.878 180.712 113.934L180.04 114.207ZM179.957 120.118H176.28L176.57 119.503H179.957C180.604 119.503 181.158 119.395 181.617 119.18C182.082 118.958 182.439 118.646 182.688 118.242C182.942 117.832 183.07 117.342 183.07 116.772C183.07 116.313 182.959 115.89 182.738 115.502C182.516 115.11 182.181 114.797 181.733 114.564C181.285 114.326 180.721 114.207 180.04 114.207H178.014L178.031 113.602H180.945L181.036 113.817C181.562 113.878 182.027 114.047 182.431 114.324C182.84 114.6 183.161 114.952 183.393 115.378C183.626 115.798 183.742 116.258 183.742 116.756C183.742 117.481 183.582 118.092 183.261 118.59C182.94 119.088 182.494 119.467 181.924 119.728C181.36 119.988 180.704 120.118 179.957 120.118ZM189.548 120.284C188.984 120.284 188.461 120.176 187.979 119.96C187.498 119.739 187.077 119.431 186.718 119.039C186.358 118.64 186.076 118.17 185.871 117.627C185.672 117.085 185.572 116.49 185.572 115.843V115.478C185.572 114.808 185.672 114.199 185.871 113.651C186.076 113.098 186.352 112.622 186.701 112.224C187.05 111.82 187.451 111.51 187.905 111.294C188.364 111.078 188.854 110.97 189.374 110.97C189.9 110.97 190.376 111.067 190.802 111.261C191.228 111.454 191.593 111.726 191.897 112.074C192.202 112.423 192.434 112.838 192.595 113.319C192.755 113.801 192.835 114.332 192.835 114.913V115.469H185.987V114.863H192.18V114.755C192.174 114.191 192.058 113.668 191.831 113.187C191.61 112.705 191.291 112.318 190.876 112.024C190.461 111.726 189.961 111.576 189.374 111.576C188.904 111.576 188.475 111.676 188.087 111.875C187.705 112.074 187.376 112.351 187.1 112.705C186.823 113.054 186.61 113.466 186.46 113.942C186.311 114.412 186.236 114.924 186.236 115.478V115.843C186.236 116.374 186.319 116.872 186.485 117.337C186.651 117.802 186.884 118.211 187.183 118.565C187.481 118.914 187.833 119.188 188.237 119.387C188.641 119.586 189.083 119.686 189.565 119.686C190.085 119.686 190.561 119.595 190.993 119.412C191.424 119.229 191.817 118.909 192.171 118.449L192.603 118.773C192.404 119.061 192.163 119.318 191.881 119.545C191.599 119.772 191.264 119.952 190.876 120.084C190.495 120.217 190.052 120.284 189.548 120.284ZM201.958 117.719L204.024 111.136H204.547L204 113.22L201.783 120.118H201.252L201.958 117.719ZM199.285 111.136L201.144 117.727L201.709 120.118H201.177L198.571 111.136H199.285ZM207.536 117.719L209.37 111.136H210.092L207.478 120.118H206.946L207.536 117.719ZM204.639 111.136L206.697 117.694L207.403 120.118H206.872L204.622 113.22L204.107 111.136H204.639ZM213.118 111.136V120.118H212.454V111.136H213.118ZM212.246 108.414C212.246 108.264 212.296 108.137 212.396 108.032C212.501 107.921 212.634 107.866 212.794 107.866C212.949 107.866 213.079 107.921 213.184 108.032C213.289 108.137 213.342 108.264 213.342 108.414C213.342 108.563 213.289 108.69 213.184 108.795C213.079 108.895 212.949 108.945 212.794 108.945C212.634 108.945 212.501 108.895 212.396 108.795C212.296 108.69 212.246 108.563 212.246 108.414ZM219.339 111.136V111.734H215.039V111.136H219.339ZM216.699 108.762H217.364V117.951C217.364 118.433 217.422 118.798 217.538 119.047C217.66 119.29 217.817 119.456 218.011 119.545C218.21 119.628 218.423 119.669 218.65 119.669C218.811 119.669 218.957 119.661 219.09 119.645C219.228 119.628 219.367 119.609 219.505 119.586L219.563 120.167C219.441 120.206 219.284 120.234 219.09 120.25C218.896 120.273 218.725 120.284 218.575 120.284C218.199 120.284 217.87 120.214 217.588 120.076C217.305 119.938 217.087 119.7 216.932 119.362C216.777 119.019 216.699 118.549 216.699 117.951V108.762ZM222.389 107.368V120.118H221.734V107.368H222.389ZM222.265 114.938L221.941 114.556C221.991 114.08 222.107 113.626 222.29 113.195C222.478 112.763 222.724 112.381 223.029 112.049C223.339 111.717 223.698 111.454 224.108 111.261C224.523 111.067 224.979 110.97 225.477 110.97C225.926 110.97 226.327 111.034 226.681 111.161C227.035 111.283 227.334 111.477 227.577 111.742C227.826 112.008 228.015 112.351 228.142 112.771C228.269 113.187 228.333 113.693 228.333 114.291V120.118H227.677V114.291C227.677 113.582 227.58 113.034 227.387 112.647C227.193 112.254 226.922 111.977 226.573 111.817C226.23 111.656 225.829 111.576 225.369 111.576C224.838 111.576 224.379 111.695 223.992 111.933C223.61 112.166 223.294 112.462 223.045 112.821C222.796 113.175 222.605 113.543 222.472 113.925C222.345 114.307 222.276 114.645 222.265 114.938Z" fill="black" class="svg-elem-6"></path>
+<path d="M235.961 108.032H236.99L241.456 118.673L245.93 108.032H246.951L241.846 120.118H241.066L235.961 108.032ZM235.645 108.032H236.55L236.658 114.838V120.118H235.645V108.032ZM246.378 108.032H247.283V120.118H246.262V114.838L246.378 108.032ZM255.754 118.507V113.875C255.754 113.449 255.665 113.081 255.488 112.771C255.311 112.462 255.051 112.224 254.708 112.058C254.365 111.892 253.942 111.809 253.438 111.809C252.973 111.809 252.558 111.892 252.193 112.058C251.833 112.218 251.548 112.437 251.338 112.713C251.133 112.985 251.031 113.286 251.031 113.618L250.035 113.61C250.035 113.272 250.118 112.946 250.284 112.63C250.45 112.315 250.685 112.033 250.989 111.784C251.294 111.535 251.656 111.338 252.077 111.194C252.503 111.045 252.97 110.97 253.48 110.97C254.121 110.97 254.686 111.078 255.173 111.294C255.665 111.51 256.05 111.833 256.327 112.265C256.603 112.697 256.742 113.239 256.742 113.892V118.233C256.742 118.543 256.764 118.864 256.808 119.196C256.858 119.528 256.927 119.802 257.016 120.018V120.118H255.961C255.895 119.918 255.843 119.669 255.804 119.371C255.771 119.066 255.754 118.778 255.754 118.507ZM255.986 114.888L256.003 115.652H254.052C253.543 115.652 253.087 115.699 252.683 115.793C252.284 115.881 251.947 116.014 251.67 116.191C251.393 116.363 251.18 116.57 251.031 116.814C250.887 117.057 250.815 117.334 250.815 117.644C250.815 117.965 250.895 118.258 251.056 118.524C251.222 118.79 251.454 119.003 251.753 119.163C252.057 119.318 252.417 119.395 252.832 119.395C253.385 119.395 253.872 119.293 254.293 119.088C254.719 118.884 255.071 118.615 255.347 118.283C255.624 117.951 255.809 117.589 255.903 117.196L256.335 117.769C256.263 118.045 256.13 118.33 255.937 118.624C255.748 118.911 255.502 119.182 255.198 119.437C254.893 119.686 254.534 119.891 254.119 120.051C253.709 120.206 253.244 120.284 252.724 120.284C252.138 120.284 251.626 120.173 251.189 119.952C250.757 119.73 250.419 119.429 250.176 119.047C249.938 118.659 249.819 118.222 249.819 117.735C249.819 117.293 249.913 116.897 250.101 116.548C250.289 116.194 250.56 115.895 250.915 115.652C251.274 115.403 251.706 115.215 252.21 115.087C252.719 114.955 253.289 114.888 253.919 114.888H255.986Z" fill="#0456B9" class="svg-elem-7"></path>
+<path d="M265.146 116.515V108.032H266.167V116.515C266.167 117.329 266.007 118.015 265.686 118.574C265.37 119.133 264.939 119.559 264.391 119.852C263.843 120.14 263.218 120.284 262.515 120.284C261.795 120.284 261.159 120.156 260.606 119.902C260.058 119.647 259.632 119.263 259.327 118.748C259.023 118.228 258.871 117.572 258.871 116.781H259.892C259.892 117.362 259.994 117.849 260.199 118.242C260.409 118.629 260.711 118.922 261.104 119.122C261.497 119.315 261.967 119.412 262.515 119.412C263.007 119.412 263.45 119.304 263.843 119.088C264.241 118.867 264.557 118.543 264.789 118.117C265.027 117.686 265.146 117.152 265.146 116.515ZM272.579 120.284C271.993 120.284 271.453 120.176 270.961 119.96C270.474 119.744 270.048 119.44 269.682 119.047C269.323 118.654 269.043 118.189 268.844 117.652C268.65 117.11 268.553 116.518 268.553 115.876V115.519C268.553 114.827 268.656 114.202 268.861 113.643C269.065 113.084 269.348 112.605 269.707 112.207C270.067 111.809 270.476 111.504 270.936 111.294C271.401 111.078 271.888 110.97 272.397 110.97C272.967 110.97 273.473 111.073 273.916 111.277C274.358 111.477 274.729 111.762 275.028 112.132C275.332 112.498 275.562 112.932 275.717 113.436C275.872 113.934 275.949 114.484 275.949 115.087V115.693H269.151V114.847H274.962V114.73C274.951 114.227 274.848 113.756 274.655 113.319C274.466 112.877 274.184 112.517 273.808 112.24C273.432 111.964 272.961 111.825 272.397 111.825C271.976 111.825 271.589 111.914 271.235 112.091C270.886 112.268 270.584 112.522 270.33 112.854C270.081 113.181 269.887 113.571 269.749 114.025C269.616 114.473 269.55 114.971 269.55 115.519V115.876C269.55 116.374 269.621 116.839 269.765 117.27C269.915 117.697 270.125 118.073 270.396 118.399C270.673 118.726 270.999 118.98 271.376 119.163C271.752 119.346 272.167 119.437 272.621 119.437C273.152 119.437 273.622 119.34 274.032 119.146C274.441 118.947 274.809 118.635 275.136 118.208L275.759 118.69C275.565 118.978 275.321 119.243 275.028 119.487C274.74 119.73 274.394 119.924 273.99 120.068C273.586 120.212 273.116 120.284 272.579 120.284Z" fill="#008489" class="svg-elem-8"></path>
+<path d="M1 31.5222V54.7622C1 54.7622 4.03671 51.1749 6.40467 49.3576C7.6121 48.4309 8.26281 47.8275 9.64748 47.1957C11.2309 46.4732 12.2344 46.228 13.9712 46.1148C14.6031 46.0736 15.5926 46.1148 15.5926 46.1148H18.295C19.7724 46.1148 20.6101 45.949 22.0782 46.1148C23.8077 46.31 24.8185 46.4732 26.402 47.1957C27.7866 47.8275 28.4212 48.4524 29.6448 49.3576C32.1673 51.2236 33.3294 52.5861 35.5899 54.7622C37.0952 56.2113 37.7711 57.2042 39.3732 58.5455C40.7654 59.7111 41.4211 60.7139 43.1565 61.2479C44.7703 61.7444 45.8039 61.451 47.4802 61.2479C49.208 61.0384 50.257 60.9646 51.8039 60.1669C53.2691 59.4114 53.7803 58.5199 55.0467 57.4646C56.3131 56.4093 57.0702 55.8716 58.2895 54.7622C59.6143 53.557 60.2076 52.7247 61.5323 51.5194C62.7517 50.4101 63.4461 49.7924 64.7752 48.8171C66.3805 47.639 67.2651 46.8907 69.0989 46.1148C70.514 45.516 71.3599 45.2428 72.8822 45.0338C74.3459 44.8329 75.2017 44.8329 76.6654 45.0338C78.1877 45.2428 78.9815 45.6584 80.4487 46.1148C81.7234 46.5112 82.4873 46.6198 83.6915 47.1957C85.0646 47.8524 85.7582 48.3915 86.9343 49.3576C88.0876 50.3049 88.5813 51.0046 89.6367 52.0599L92.339 54.7622V39.6292C92.339 37.3074 92.5209 35.9986 92.339 33.684C92.1379 31.1242 92.1397 29.61 91.258 27.1984C90.5119 25.1575 89.9523 23.999 88.5557 22.3342C87.009 20.4905 85.7838 19.7399 83.6915 18.5509C81.7151 17.4278 80.5221 16.803 78.2868 16.3891C76.2115 16.0047 74.9655 16.0503 72.8822 16.3891C71.3655 16.6357 70.5362 16.9266 69.0989 17.47C67.333 18.1376 66.3459 18.5847 64.7752 19.6319C62.2915 21.2876 61.4131 22.86 59.3705 25.0365C57.6312 26.8898 57.1071 28.4127 55.0467 29.9008C53.5163 31.0061 52.5785 31.7147 50.723 32.0626C49.4783 32.296 48.7466 32.0626 47.4802 32.0626C45.7917 32.0626 44.8229 32.3347 43.1565 32.0626L40.9946 31.5222C40.9946 31.5222 38.975 29.9249 37.7518 28.8198C36.2014 27.4191 35.446 26.514 33.9685 25.0365C32.28 23.348 31.5242 22.1859 29.6448 20.7128C28.4469 19.7739 27.7595 19.2391 26.402 18.5509C25.3882 18.037 24.755 17.8921 23.6996 17.47C22.6443 17.0479 22.1045 16.6458 20.9973 16.3891C19.3524 16.0076 18.3534 16.2179 16.6736 16.3891C14.7377 16.5864 13.6172 16.7499 11.8093 17.47C10.2285 18.0997 9.39242 18.6176 8.02608 19.6319C6.34837 20.8773 5.48822 21.7374 4.2428 23.4151C3.22852 24.7815 2.71783 25.6204 2.08093 27.1984C1.42951 28.8124 1 31.5222 1 31.5222Z" fill="#0656B7" stroke="#0656B7" class="svg-elem-9"></path>
+<path d="M2.65271 61.1211C1.65754 63.3122 1.03131 67.0663 1.03131 67.0663V84.9017C1.03131 84.9017 2.3557 88.3907 3.73365 90.3064C5.12803 92.2449 5.93031 93.5449 8.05739 94.6301C9.60775 95.4211 10.6426 95.6283 12.3811 95.711C14.5311 95.8134 15.9895 95.816 17.7858 94.6301C19.1615 93.7219 19.6293 92.7944 20.4881 91.3873C21.3255 90.0152 21.4367 89.0638 22.1095 87.604C22.8998 85.8896 22.6517 84.25 24.2714 83.2803C25.3729 82.6208 26.2304 82.7398 27.5142 82.7398C28.7981 82.7398 29.5804 82.7667 30.757 83.2803C32.8133 84.1779 32.9138 86.0586 34.5403 87.604C36.2849 89.2617 37.4912 89.9277 39.4045 91.3873C41.0826 92.6675 41.8477 93.6717 43.7282 94.6301C45.6916 95.6306 49.1329 96.2515 49.1329 96.2515H78.8586C78.8586 96.2515 80.519 95.9803 81.561 95.711C82.8534 95.377 83.6447 95.2924 84.8038 94.6301C86.3587 93.7415 86.8882 92.7532 88.0466 91.3873C89.2209 90.0026 89.9943 89.2555 90.7489 87.604C91.4722 86.021 91.8298 83.2803 91.8298 83.2803C91.8298 83.2803 92.6059 74.6607 91.8298 69.2281L91.8248 69.193C91.5235 67.084 91.3512 65.8776 90.7489 63.8235C90.2415 62.093 89.8977 61.1303 89.1275 59.4997C88.4007 57.9611 88.0344 57.0406 86.9656 55.7165C85.7435 54.2022 84.8492 53.4778 83.1824 52.4736C81.8055 51.6442 80.9208 51.3703 79.3991 50.8522C77.7514 50.2913 76.8158 49.7713 75.0753 49.7713C73.3349 49.7713 72.3771 50.23 70.7516 50.8522C69.4293 51.3584 68.6666 51.6586 67.5088 52.4736C65.6741 53.7651 65.2996 55.1985 63.7255 56.7974C61.9425 58.6085 60.8549 59.5447 58.8613 61.1211C56.8404 62.7192 55.842 63.9307 53.4566 64.9044C51.0794 65.8748 49.5388 65.9853 46.971 65.9853C44.4033 65.9853 42.8632 65.8737 40.4854 64.9044C38.6416 64.1528 37.8153 63.3113 36.1617 62.2021C34.6538 61.1906 33.8082 60.6189 32.3784 59.4997C30.1424 57.7494 29.1114 56.5046 26.9737 54.6355C25.5088 53.3547 24.8573 52.3968 23.1905 51.3927L23.127 51.3544C21.7879 50.5476 20.9647 50.0517 19.4072 49.7713C18.1608 49.547 17.4208 49.6126 16.1644 49.7713C14.6399 49.9639 13.7747 50.2048 12.3811 50.8522C10.7345 51.6172 9.98257 52.3802 8.59785 53.5546C7.23198 54.713 6.47844 55.4026 5.35505 56.7974C4.10606 58.3481 3.47613 59.3082 2.65271 61.1211Z" fill="#008488" stroke="#008488" class="svg-elem-10"></path>
+</svg>
+      <div class="shine"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-content">
+      <img src="logo.png" alt="MaJe Technologies" class="navbar-logo">
+      <ul class="navbar-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#cases">Cases</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero section" id="hero">
+    <!-- Parallax Background Elements -->
+    <div class="hero-bg">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+      </div>
+      
+      <!-- Animated SVG Elements -->
+      <div class="svg-animations">
+        <svg class="hero-svg-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="80" stroke="url(#gradient1)" stroke-width="2" fill="none" opacity="0.3"/>
+          <circle cx="100" cy="100" r="60" stroke="url(#gradient2)" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <circle cx="100" cy="100" r="40" stroke="url(#gradient3)" stroke-width="1" fill="none" opacity="0.5"/>
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        <svg class="hero-svg-2" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 75 Q150 25 250 75 T450 75" stroke="url(#gradient4)" stroke-width="3" fill="none" opacity="0.4"/>
+          <path d="M50 75 Q150 125 250 75 T450 75" stroke="url(#gradient5)" stroke-width="2" fill="none" opacity="0.3"/>
+          <defs>
+            <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#2563EB;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        <svg class="hero-svg-3" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="75,10 140,140 10,140" stroke="url(#gradient6)" stroke-width="2" fill="none" opacity="0.3"/>
+          <polygon points="75,30 120,120 30,120" stroke="url(#gradient7)" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <defs>
+            <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="gradient7" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line">You think.</span>
+            <span class="title-line">We execute.</span>
+            <span class="title-line highlight">Be with MaJe.</span>
+          </h1>
+          <p class="hero-subtitle">Transforming ideas into digital reality through cutting-edge web development, automation, AI solutions, and creative design services.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              <span>Get Started</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#services" class="btn btn-outline">
+              <span>Our Services</span>
+              <i class="fas fa-play"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="tech-stack">
+            <div class="tech-item">
+              <i class="fas fa-code"></i>
+              <span>Web Dev</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-robot"></i>
+              <span>AI & ML</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-palette"></i>
+              <span>Design</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Mobile</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-cogs"></i>
+              <span>Automation</span>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-share-alt"></i>
+              <span>Social Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About MaJe Technologies</h2>
+          <p>We are a team of passionate developers and innovators dedicated to transforming ideas into powerful digital solutions. Our expertise spans across modern web technologies, automation systems, and cutting-edge AI implementations.</p>
+          <p>With years of experience in the industry, we've helped numerous businesses scale their operations and achieve their digital transformation goals through innovative technology solutions.</p>
+        </div>
+        <div class="about-illustration">
+          <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="50" y="50" width="300" height="200" rx="20" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="2"/>
+            <circle cx="100" cy="100" r="20" fill="#2563EB"/>
+            <rect x="150" y="90" width="150" height="20" rx="10" fill="#d1d5db"/>
+            <rect x="150" y="130" width="100" height="20" rx="10" fill="#d1d5db"/>
+            <rect x="150" y="170" width="120" height="20" rx="10" fill="#d1d5db"/>
+            <path d="M200 200 L250 200 L250 250 L200 250 Z" fill="#2563EB"/>
+            <text x="200" y="240" text-anchor="middle" fill="white" font-family="Inter" font-size="14" font-weight="600">AI</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services section" id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-code"></i>
+          <h3>Web Development</h3>
+          <p>Modern, responsive websites and web applications built with the latest technologies and best practices.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-robot"></i>
+          <h3>Automation</h3>
+          <p>Streamline your business processes with custom automation solutions that save time and reduce errors.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Mobile Apps</h3>
+          <p>Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-brain"></i>
+          <h3>AI Projects</h3>
+          <p>Leverage artificial intelligence and machine learning to solve complex business challenges and unlock new opportunities.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-share-alt"></i>
+          <h3>Social Media Management</h3>
+          <p>Complete social media strategy, content creation, and management to boost your online presence and engagement.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-palette"></i>
+          <h3>Graphic Designing</h3>
+          <p>Professional graphic design services including logos, branding, marketing materials, and visual identity solutions.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-image"></i>
+          <h3>Poster Design</h3>
+          <p>Eye-catching poster designs for events, promotions, and marketing campaigns that capture attention and drive results.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Festival Package</h3>
+          <p>Complete festival and event design packages including posters, banners, social media content, and promotional materials.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-clock"></i>
+          <h3>Daily Package</h3>
+          <p>Regular content creation and design services for daily social media posts, stories, and ongoing marketing needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="case-studies section" id="cases">
+    <div class="container">
+      <h2>Case Studies</h2>
+      <div class="case-studies-grid">
+        <div class="case-card">
+          <div class="case-image">E-commerce Platform</div>
+          <div class="case-overlay">
+            <h3>E-commerce Platform</h3>
+            <p>Complete digital transformation for a retail business, resulting in 300% increase in online sales.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-image">AI Chatbot</div>
+          <div class="case-overlay">
+            <h3>AI Customer Service</h3>
+            <p>Intelligent chatbot implementation that reduced customer service response time by 80%.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-image">Automation System</div>
+          <div class="case-overlay">
+            <h3>Process Automation</h3>
+            <p>Custom automation solution that saved 40 hours per week of manual work for a manufacturing company.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats section">
+    <div class="container">
+      <div class="stats-content">
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="150">0</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="75">0</h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="25">0</h3>
+          <p>Countries Served</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="5">0</h3>
+          <p>Years Experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials section">
+    <div class="container">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonials-carousel">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"MaJe Technologies transformed our business with their innovative automation solutions. The team's expertise and dedication exceeded our expectations."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JS</div>
+            <div>
+              <h4>John Smith</h4>
+              <p>CEO, TechCorp</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The AI implementation they delivered has revolutionized our customer service. Response times improved dramatically and customer satisfaction is at an all-time high."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MJ</div>
+            <div>
+              <h4>Maria Johnson</h4>
+              <p>CTO, InnovateLabs</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Professional, reliable, and incredibly talented. MaJe Technologies delivered our web platform on time and within budget. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DW</div>
+            <div>
+              <h4>David Wilson</h4>
+              <p>Founder, StartupXYZ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <h2>Let's build the future together.</h2>
+      <p>Ready to transform your ideas into reality? Get in touch with us today.</p>
+      <a href="mailto:hello@majetechnologies.com" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <img src="logo.png" alt="MaJe Technologies" class="footer-logo">
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initialize Lenis smooth scrolling
+    const lenis = new Lenis({
+      duration: 1,
+      easing: (t) => t,
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 0.8,
+      smoothTouch: true,
+      touchMultiplier: 1,
+      infinite: false,
+      lerp: 0.1,
+      wheelMultiplier: 0.8,
+    });
+
+    // Animation frame loop for Lenis
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Logo animation and intro sequence
+    let hasPlayedIntro = localStorage.getItem('majeIntroPlayed') === 'true';
+
+    if (!hasPlayedIntro) {
+      // Set up SVG path animations
+      document.querySelectorAll(".logo-intro svg path").forEach((path, i) => {
+        const len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+      });
+
+      // Create intro timeline
+      const introTl = gsap.timeline({
+        onComplete: () => {
+          // Mark intro as played
+          localStorage.setItem('majeIntroPlayed', 'true');
+          
+          // Hide logo intro and show navbar
+          gsap.to("#logoIntro", {
+            opacity: 0,
+            visibility: "hidden",
+            duration: 0.8,
+            ease: "power2.inOut",
+            onComplete: () => {
+              document.getElementById("logoIntro").style.display = "none";
+              document.getElementById("navbar").classList.add("visible");
+              
+              // Auto scroll to hero section
+              lenis.scrollTo("#hero", {
+                duration: 1.2,
+                easing: (t) => t
+              });
+            }
+          });
+        }
+      });
+
+      // Animate logo elements (faster animation)
+      introTl
+        .to(".logo-intro .svg-elem-1", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        .to(".logo-intro .svg-elem-1", {
+          fill: "#132C41",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-2", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-2", {
+          fill: "#132C41",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-3", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-3", {
+          fill: "#132C41",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-4", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-4", {
+          fill: "#132C41",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-5", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-5", {
+          fill: "#07233B",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-6", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-6", {
+          fill: "black",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-7", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-7", {
+          fill: "#0456B9",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-8", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-8", {
+          fill: "#008489",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-9", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-9", {
+          fill: "#0656B7",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1")
+        .to(".logo-intro .svg-elem-10", {
+          strokeDashoffset: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+        .to(".logo-intro .svg-elem-10", {
+          fill: "#008488",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.1");
+
+      // Mark intro as played
+      localStorage.setItem('majeIntroPlayed', 'true');
+    } else {
+      // Skip intro animation on revisit
+      document.getElementById("logoIntro").style.display = "none";
+      document.getElementById("navbar").classList.add("visible");
+      
+      // Initialize navbar shine immediately
+      setTimeout(createNavbarShine, 100);
+    }
+
+    // Navbar logo shine effect (continuous loop)
+    function createNavbarShine() {
+      const navbarLogo = document.querySelector('.navbar-logo');
+      if (navbarLogo) {
+        const shine = document.createElement('div');
+        shine.style.cssText = `
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 30%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+          transform: skewX(-25deg);
+          pointer-events: none;
+          z-index: 1;
+        `;
+        
+        navbarLogo.style.position = 'relative';
+        navbarLogo.style.overflow = 'hidden';
+        navbarLogo.appendChild(shine);
+
+        // Continuous shine animation
+        gsap.to(shine, {
+          left: '150%',
+          duration: 2,
+          ease: 'none',
+          repeat: -1,
+          repeatDelay: 3
+        });
+      }
+    }
+
+    // Initialize navbar shine after navbar is visible
+    setTimeout(createNavbarShine, hasPlayedIntro ? 100 : 3000);
+
+    // Hero section simple animations
+
+    // Hero content animations
+    gsap.fromTo(".title-line", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".hero-subtitle", 
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.6, 
+        delay: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".hero-buttons", 
+      { opacity: 0, y: 15 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.6, 
+        delay: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".tech-item", 
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.5, 
+        stagger: 0.08,
+        delay: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // About section animations
+    gsap.fromTo(".about-text", 
+      { opacity: 0, x: -50 },
+      { 
+        opacity: 1, 
+        x: 0, 
+        duration: 1.2, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".about",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".about-illustration svg", 
+      { opacity: 0, scale: 0.8 },
+      { 
+        opacity: 1, 
+        scale: 1, 
+        duration: 1, 
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".about",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Services section animations
+    gsap.fromTo(".service-card", 
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".services",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Case studies animations
+    gsap.fromTo(".case-card", 
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".case-studies",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Stats counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target;
+          }
+        };
+
+        updateCounter();
+      });
+    }
+
+    // Trigger counter animation when stats section is in view
+    ScrollTrigger.create({
+      trigger: ".stats",
+      start: "top 80%",
+      onEnter: animateCounters
+    });
+
+    // Testimonials horizontal scroll
+    gsap.to(".testimonials-carousel", {
+      x: () => -(document.querySelector(".testimonials-carousel").scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".testimonials",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
+
+    // Contact section animation
+    gsap.fromTo(".contact", 
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1.2, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".contact",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          lenis.scrollTo(target, {
+            duration: 1.5,
+            easing: (t) => 1 - Math.pow(1 - t, 3)
+          });
+        }
+      });
+    });
+
+    // Navbar visibility on scroll
+    let lastScrollY = window.scrollY;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        navbar.classList.add('visible');
+      } else if (currentScrollY < lastScrollY) {
+        navbar.classList.add('visible');
+      }
+      
+      lastScrollY = currentScrollY;
+    });
+
+    // Service card hover effects
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -8,
+          boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Case card hover effects
+    document.querySelectorAll('.case-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -5,
+          boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Button hover effects
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+          y: -2,
+          boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          y: 0,
+          boxShadow: 'none',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Initialize all animations
+    console.log('MaJe Technologies website loaded successfully! 🚀');
+  </script>
+</body>
+</html>
