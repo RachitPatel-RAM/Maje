@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Us - MaJe Technologies</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="bglogo.png">
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #000;
+      --secondary: #fff;
+      --accent: #6366f1;
+      --text-primary: #000;
+      --text-secondary: #6b7280;
+      --bg-primary: #fff;
+      --bg-secondary: #f9fafb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Mobile Navigation */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      transition: 0.3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      padding: 2rem;
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin-top: 4rem;
+    }
+
+    .mobile-nav-list li {
+      margin: 1.5rem 0;
+    }
+
+    .mobile-nav-list a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* About Content */
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    /* Values Section */
+    .values {
+      background: var(--bg-secondary);
+      padding: 4rem 2rem;
+    }
+
+    .values-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .value-card {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .value-card i {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .value-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 4rem 2rem;
+    }
+
+    .team-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-primary);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid var(--accent);
+    }
+
+    .team-member h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .team-member p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-text h2 {
+        font-size: 2rem;
+      }
+
+      .values h2,
+      .team h2 {
+        font-size: 2rem;
+      }
+
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html">
+        <img src="logo.png" alt="MaJe Technologies" class="logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="cases.html">Cases</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="cases.html">Cases</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>About MaJe Technologies</h1>
+      <p>We are passionate developers and designers creating innovative digital solutions that transform ideas into reality.</p>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>Founded with a vision to bridge the gap between innovative ideas and digital reality, MaJe Technologies has been at the forefront of technological advancement. We believe that every great idea deserves to be brought to life through cutting-edge technology.</p>
+          <p>Our team combines years of experience in web development, mobile applications, AI solutions, and digital marketing to deliver comprehensive solutions that drive business growth and success.</p>
+          <p>We are committed to excellence, innovation, and delivering results that exceed expectations. Our client-centric approach ensures that every project is tailored to meet specific business needs and objectives.</p>
+        </div>
+        <div class="about-image">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#f8fafc"/>
+            <circle cx="200" cy="150" r="80" fill="#e0e7ff" stroke="#6366f1" stroke-width="3"/>
+            <text x="200" y="160" text-anchor="middle" fill="#6366f1" font-size="24" font-weight="600">MaJe</text>
+            <circle cx="120" cy="100" r="20" fill="#c7d2fe"/>
+            <circle cx="280" cy="100" r="20" fill="#c7d2fe"/>
+            <circle cx="120" cy="200" r="20" fill="#c7d2fe"/>
+            <circle cx="280" cy="200" r="20" fill="#c7d2fe"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+      <div class="values-content">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Innovation</h3>
+            <p>We constantly explore new technologies and methodologies to deliver cutting-edge solutions that keep our clients ahead of the competition.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-handshake"></i>
+            <h3>Partnership</h3>
+            <p>We believe in building long-term relationships with our clients, working as an extension of their team to achieve shared goals.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-star"></i>
+            <h3>Excellence</h3>
+            <p>Quality is at the heart of everything we do. We strive for perfection in every project, ensuring exceptional results every time.</p>
+          </div>
+          <div class="value-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Growth</h3>
+            <p>We are committed to continuous learning and improvement, both for ourselves and our clients, driving sustainable growth and success.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+      <div class="team-content">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <div style="width: 120px; height: 120px; border-radius: 50%; background: #6366f1; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">MJ</div>
+            <h3>MaJe Founder</h3>
+            <p>CEO & Lead Developer</p>
+          </div>
+          <div class="team-member">
+            <div style="width: 120px; height: 120px; border-radius: 50%; background: #10b981; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">DEV</div>
+            <h3>Development Team</h3>
+            <p>Full-Stack Developers</p>
+          </div>
+          <div class="team-member">
+            <div style="width: 120px; height: 120px; border-radius: 50%; background: #f59e0b; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">UX</div>
+            <h3>Design Team</h3>
+            <p>UI/UX Designers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      duration: 1,
+      easing: (t) => t,
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 0.8,
+      smoothTouch: true,
+      touchMultiplier: 1,
+      infinite: false,
+      lerp: 0.1,
+      wheelMultiplier: 0.8,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.mobile-nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // GSAP Animations
+    gsap.fromTo(".hero h1", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.8, 
+        ease: "power2.out"
+      }
+    );
+
+    gsap.fromTo(".hero p", 
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.8, 
+        delay: 0.2,
+        ease: "power2.out"
+      }
+    );
+
+    gsap.fromTo(".about-text", 
+      { opacity: 0, x: -50 },
+      { 
+        opacity: 1, 
+        x: 0,
+        duration: 0.8, 
+        scrollTrigger: {
+          trigger: ".about-content",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".about-image", 
+      { opacity: 0, x: 50 },
+      { 
+        opacity: 1, 
+        x: 0,
+        duration: 0.8, 
+        scrollTrigger: {
+          trigger: ".about-content",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".value-card", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.6, 
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: ".values",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".team-member", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.6, 
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: ".team",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Studies - MaJe Technologies</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="bglogo.png">
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #000;
+      --secondary: #fff;
+      --accent: #6366f1;
+      --text-primary: #000;
+      --text-secondary: #6b7280;
+      --bg-primary: #fff;
+      --bg-secondary: #f9fafb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Mobile Navigation */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      transition: 0.3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      padding: 2rem;
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin-top: 4rem;
+    }
+
+    .mobile-nav-list li {
+      margin: 1.5rem 0;
+    }
+
+    .mobile-nav-list a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Cases Content */
+    .cases-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .case-card {
+      background: var(--bg-primary);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .case-image {
+      height: 200px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .case-content {
+      padding: 2rem;
+    }
+
+    .case-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .case-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .case-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .case-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .case-btn {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .case-btn:hover {
+      background: #4f46e5;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: var(--bg-secondary);
+      padding: 4rem 2rem;
+    }
+
+    .stats-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stats h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-primary);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-card i {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .stat-card .number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card .label {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--accent);
+      color: white;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-btn {
+      background: white;
+      color: var(--accent);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stats h2 {
+        font-size: 2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta h2 {
+        font-size: 2rem;
+      }
+
+      .cta p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html">
+        <img src="logo.png" alt="MaJe Technologies" class="logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="cases.html">Cases</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="cases.html">Cases</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Case Studies</h1>
+      <p>Explore our successful projects and see how we've helped businesses achieve their digital transformation goals.</p>
+    </section>
+
+    <!-- Cases Content -->
+    <section class="cases-content">
+      <div class="cases-grid">
+        <!-- E-commerce Platform -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">E-commerce</span>
+            <h3>Modern E-commerce Platform</h3>
+            <p>Built a comprehensive e-commerce solution with advanced features including inventory management, payment processing, and analytics dashboard.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">300%</div>
+                <div class="stat-label">Sales Increase</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Products</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- Mobile App -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">Mobile App</span>
+            <h3>Fitness Tracking App</h3>
+            <p>Developed a cross-platform mobile application with real-time tracking, social features, and AI-powered workout recommendations.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">100K+</div>
+                <div class="stat-label">Downloads</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">App Rating</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- AI Solution -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">AI & ML</span>
+            <h3>Customer Service Chatbot</h3>
+            <p>Implemented an intelligent chatbot that handles customer inquiries 24/7, reducing response time and improving customer satisfaction.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">80%</div>
+                <div class="stat-label">Query Resolution</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Availability</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- Business Automation -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">Automation</span>
+            <h3>Workflow Automation System</h3>
+            <p>Created an automated workflow system that streamlined business processes, reducing manual work by 70% and improving efficiency.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">70%</div>
+                <div class="stat-label">Time Saved</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Accuracy</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- Social Media Campaign -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-share-alt"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">Social Media</span>
+            <h3>Viral Social Media Campaign</h3>
+            <p>Designed and executed a comprehensive social media strategy that increased brand awareness and engagement across multiple platforms.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">500%</div>
+                <div class="stat-label">Engagement</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">Reach</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- Graphic Design Project -->
+        <div class="case-card">
+          <div class="case-image">
+            <i class="fas fa-palette"></i>
+          </div>
+          <div class="case-content">
+            <span class="case-tag">Design</span>
+            <h3>Festival Branding Package</h3>
+            <p>Created a complete visual identity for a music festival including posters, digital assets, and promotional materials.</p>
+            <div class="case-stats">
+              <div class="stat">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Designs</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Client Satisfaction</div>
+              </div>
+            </div>
+            <a href="contact.html" class="case-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="stats-content">
+        <h2>Our Success Metrics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <i class="fas fa-project-diagram"></i>
+            <div class="number">150+</div>
+            <div class="label">Projects Completed</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <div class="number">100+</div>
+            <div class="label">Happy Clients</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-globe"></i>
+            <div class="number">25+</div>
+            <div class="label">Countries Served</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-award"></i>
+            <div class="number">98%</div>
+            <div class="label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="cta-content">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Join our growing list of successful clients and let's create something amazing together.</p>
+        <a href="contact.html" class="cta-btn">Start Your Project</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      duration: 1,
+      easing: (t) => t,
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 0.8,
+      smoothTouch: true,
+      touchMultiplier: 1,
+      infinite: false,
+      lerp: 0.1,
+      wheelMultiplier: 0.8,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.mobile-nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // GSAP Animations
+    gsap.fromTo(".hero h1", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.8, 
+        ease: "power2.out"
+      }
+    );
+
+    gsap.fromTo(".hero p", 
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.8, 
+        delay: 0.2,
+        ease: "power2.out"
+      }
+    );
+
+    gsap.fromTo(".case-card", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.6, 
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".cases-content",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".stat-card", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.6, 
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".stats",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(".cta", 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 0.8, 
+        scrollTrigger: {
+          trigger: ".cta",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  </script>
+</body>
+</html>
