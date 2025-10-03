@@ -1,0 +1,57 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffed4e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#bgGradient)"/>
+  
+  <!-- Mobile Phone -->
+  <g transform="translate(200, 125)">
+    <!-- Phone outline -->
+    <rect x="-30" y="-60" width="60" height="120" rx="12" fill="none" stroke="url(#iconGradient)" stroke-width="3"/>
+    
+    <!-- Screen -->
+    <rect x="-25" y="-50" width="50" height="90" rx="5" fill="url(#iconGradient)" opacity="0.1"/>
+    
+    <!-- Status bar -->
+    <rect x="-20" y="-45" width="40" height="3" fill="url(#iconGradient)" opacity="0.7"/>
+    
+    <!-- App icons grid -->
+    <rect x="-20" y="-35" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="-8" y="-35" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="4" y="-35" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="16" y="-35" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    
+    <rect x="-20" y="-20" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="-8" y="-20" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="4" y="-20" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="16" y="-20" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    
+    <rect x="-20" y="-5" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="-8" y="-5" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="4" y="-5" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    <rect x="16" y="-5" width="8" height="8" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+    
+    <!-- Home button -->
+    <circle cx="0" cy="50" r="6" fill="none" stroke="url(#iconGradient)" stroke-width="2"/>
+    
+    <!-- Touch indicators -->
+    <circle cx="-35" cy="0" r="3" fill="url(#iconGradient)" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="35" cy="0" r="3" fill="url(#iconGradient)" opacity="0.6">
+      <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="200" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Mobile App</text>
+</svg>

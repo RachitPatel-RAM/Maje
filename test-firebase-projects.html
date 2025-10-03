@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Projects Test</title>
+</head>
+<body>
+    <h1>Firebase Projects Test</h1>
+    <div id="status">Testing Firebase connection...</div>
+    <div id="projects"></div>
+
+    <!-- Firebase v8 SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD5ypjJ7FfbrWhANRzxImp9g-1C25ii0JY",
+            authDomain: "maje-3dfdf.firebaseapp.com",
+            databaseURL: "https://maje-3dfdf-default-rtdb.firebaseio.com",
+            projectId: "maje-3dfdf",
+            storageBucket: "maje-3dfdf.firebasestorage.app",
+            messagingSenderId: "209651607167",
+            appId: "1:209651607167:web:6391de52ee9543d38cc14a"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        async function testFirebaseConnection() {
+            const statusDiv = document.getElementById('status');
+            const projectsDiv = document.getElementById('projects');
+
+            try {
+                statusDiv.innerHTML = 'Connecting to Firebase...';
+                console.log('Testing Firebase connection...');
+
+                const projectsRef = database.ref('projects');
+                
+                projectsRef.once('value', (snapshot) => {
+                    const projectsData = snapshot.val();
+                    console.log('Firebase data:', projectsData);
+
+                    if (projectsData) {
+                        const projects = Object.keys(projectsData).map(key => ({
+                            id: key,
+                            ...projectsData[key]
+                        }));
+
+                        statusDiv.innerHTML = `✅ Firebase connected! Found ${projects.length} projects.`;
+                        projectsDiv.innerHTML = '<h2>Projects:</h2>' + 
+                            projects.map(project => `
+                                <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                                    <h3>${project.title || 'Untitled'}</h3>
+                                    <p><strong>Category:</strong> ${project.category || 'N/A'}</p>
+                                    <p><strong>Description:</strong> ${project.description || 'N/A'}</p>
+                                    <p><strong>Created:</strong> ${project.createdAt || 'N/A'}</p>
+                                </div>
+                            `).join('');
+                    } else {
+                        statusDiv.innerHTML = '⚠️ Firebase connected but no projects found in database.';
+                        projectsDiv.innerHTML = '<p>No projects in the database. Try adding some through the admin panel.</p>';
+                    }
+                }, (error) => {
+                    console.error('Firebase error:', error);
+                    statusDiv.innerHTML = `❌ Firebase error: ${error.message}`;
+                });
+
+            } catch (error) {
+                console.error('Connection error:', error);
+                statusDiv.innerHTML = `❌ Connection error: ${error.message}`;
+            }
+        }
+
+        // Test connection when page loads
+        window.addEventListener('load', testFirebaseConnection);
+    </script>
+</body>
+</html>

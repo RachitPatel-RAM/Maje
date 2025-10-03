@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - MaJe Technologies | How We Use Cookies</title>
+    <meta name="description" content="Learn about MaJe Technologies' Cookie Policy. Understand how we use cookies, tracking technologies, and your choices regarding cookie preferences.">
+    <meta name="keywords" content="cookie policy, cookies, tracking, privacy, MaJe Technologies, web analytics, user preferences">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MaJe Technologies">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Cookie Policy - MaJe Technologies">
+    <meta property="og:description" content="Learn about MaJe Technologies' Cookie Policy and how we use cookies and tracking technologies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://majetechnologies.com/cookie-policy.html">
+    <meta property="og:image" content="https://majetechnologies.com/logo.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cookie Policy - MaJe Technologies">
+    <meta name="twitter:description" content="Learn about MaJe Technologies' Cookie Policy and how we use cookies and tracking technologies.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Golden Text Selection */
+        ::selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        ::-moz-selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cookies" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="15" cy="15" r="1.5" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23cookies)"/></svg>');
+            animation: float 25s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .cookie-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: #7c3aed;
+            font-size: 1.5rem;
+        }
+
+        .section-content {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .section-content h3 {
+            color: #2d3748;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .section-content ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-content li::marker {
+            color: #7c3aed;
+        }
+
+        .cookie-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .cookie-type {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #7c3aed;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cookie-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .cookie-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .cookie-type h4 {
+            color: #7c3aed;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cookie-type p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ddd6fe 0%, #ede9fe 100%);
+            border-left: 4px solid #7c3aed;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '\f05a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            left: -12px;
+            background: #7c3aed;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            left: -12px;
+            background: #f59e0b;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .cookie-settings {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cookie-settings::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cookie-settings-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .settings-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .settings-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+                margin: 0 1rem 2rem 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .cookie-types {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MaJe Technologies</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="cookie-icon">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <h1>Cookie Policy</h1>
+            <p>Learn how we use cookies and tracking technologies to enhance your browsing experience.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i>
+                What Are Cookies?
+            </h2>
+            <div class="section-content">
+                <p>Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better browsing experience by remembering your preferences and analyzing how you use our site.</p>
+                
+                <div class="highlight-box">
+                    <strong>Effective Date:</strong> January 1, 2024<br>
+                    <strong>Last Updated:</strong> January 1, 2024
+                </div>
+                
+                <p>This Cookie Policy explains what cookies are, how we use them, the types of cookies we use, and how you can control your cookie preferences. By using our website, you consent to the use of cookies as described in this policy.</p>
+            </div>
+        </div>
+
+        <!-- How We Use Cookies -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                How We Use Cookies
+            </h2>
+            <div class="section-content">
+                <p>We use cookies for various purposes to improve your experience on our website:</p>
+                <ul>
+                    <li><strong>Essential Functionality:</strong> Enable core website features and services</li>
+                    <li><strong>Performance Analysis:</strong> Understand how visitors interact with our website</li>
+                    <li><strong>Personalization:</strong> Remember your preferences and settings</li>
+                    <li><strong>Security:</strong> Protect against fraud and enhance website security</li>
+                    <li><strong>Marketing:</strong> Deliver relevant advertisements and measure campaign effectiveness</li>
+                    <li><strong>Social Media Integration:</strong> Enable sharing and social media features</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>Important:</strong> Some cookies are essential for our website to function properly. Disabling these cookies may affect your ability to use certain features of our site.
+                </div>
+            </div>
+        </div>
+
+        <!-- Types of Cookies -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-layer-group"></i>
+                Types of Cookies We Use
+            </h2>
+            <div class="section-content">
+                <div class="cookie-types">
+                    <div class="cookie-type">
+                        <h4><i class="fas fa-shield-alt"></i> Essential Cookies</h4>
+                        <p>These cookies are necessary for the website to function and cannot be switched off. They are usually set in response to actions you take, such as setting privacy preferences or filling in forms.</p>
+                        <p><strong>Duration:</strong> Session or up to 1 year</p>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <h4><i class="fas fa-chart-line"></i> Analytics Cookies</h4>
+                        <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve our website performance.</p>
+                        <p><strong>Duration:</strong> Up to 2 years</p>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <h4><i class="fas fa-user-cog"></i> Functional Cookies</h4>
+                        <p>These cookies enable enhanced functionality and personalization, such as remembering your preferences, language settings, and login information.</p>
+                        <p><strong>Duration:</strong> Up to 1 year</p>
+                    </div>
+                    
+                    <div class="cookie-type">
+                        <h4><i class="fas fa-bullhorn"></i> Marketing Cookies</h4>
+                        <p>These cookies track your browsing habits to deliver advertisements that are relevant to you and your interests. They also help measure the effectiveness of advertising campaigns.</p>
+                        <p><strong>Duration:</strong> Up to 2 years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third-Party Cookies -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-external-link-alt"></i>
+                Third-Party Cookies
+            </h2>
+            <div class="section-content">
+                <p>We may use third-party services that set cookies on our website. These services help us provide better functionality and analyze website performance:</p>
+                
+                <h3>Google Analytics</h3>
+                <p>We use Google Analytics to understand how visitors use our website. Google Analytics uses cookies to collect information about your use of our website, including:</p>
+                <ul>
+                    <li>Pages visited and time spent on each page</li>
+                    <li>How you arrived at our website</li>
+                    <li>Your general location (country/city level)</li>
+                    <li>Device and browser information</li>
+                </ul>
+                
+                <h3>Social Media Platforms</h3>
+                <p>Our website may include social media features and widgets from platforms such as:</p>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>LinkedIn</li>
+                    <li>Instagram</li>
+                </ul>
+                <p>These features may collect information about your IP address and which page you're visiting, and may set cookies to enable proper functionality.</p>
+                
+                <h3>Advertising Partners</h3>
+                <p>We may work with advertising partners who use cookies to deliver targeted advertisements based on your interests and browsing behavior.</p>
+                
+                <div class="highlight-box">
+                    <strong>Note:</strong> Third-party cookies are governed by the respective third party's privacy policy. We recommend reviewing their policies to understand how they use your information.
+                </div>
+            </div>
+        </div>
+
+        <!-- Cookie Duration -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-clock"></i>
+                Cookie Duration
+            </h2>
+            <div class="section-content">
+                <p>Cookies can be categorized by how long they remain on your device:</p>
+                
+                <h3>Session Cookies</h3>
+                <p>These temporary cookies are deleted when you close your browser. They help us:</p>
+                <ul>
+                    <li>Maintain your session while browsing our website</li>
+                    <li>Remember items in your shopping cart</li>
+                    <li>Ensure security during your visit</li>
+                </ul>
+                
+                <h3>Persistent Cookies</h3>
+                <p>These cookies remain on your device for a specified period or until you delete them. They help us:</p>
+                <ul>
+                    <li>Remember your preferences for future visits</li>
+                    <li>Provide personalized content and recommendations</li>
+                    <li>Analyze long-term website usage patterns</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>Automatic Deletion:</strong> Most persistent cookies have an expiration date and will be automatically deleted after a certain period, typically ranging from 30 days to 2 years.
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Cookie Choices -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-sliders-h"></i>
+                Your Cookie Choices
+            </h2>
+            <div class="section-content">
+                <p>You have several options for managing cookies on our website:</p>
+                
+                <h3>Browser Settings</h3>
+                <p>Most web browsers allow you to control cookies through their settings. You can:</p>
+                <ul>
+                    <li>Block all cookies</li>
+                    <li>Allow only first-party cookies</li>
+                    <li>Delete existing cookies</li>
+                    <li>Receive notifications when cookies are set</li>
+                </ul>
+                
+                <h3>Opt-Out Tools</h3>
+                <p>For specific types of cookies, you can use these opt-out tools:</p>
+                <ul>
+                    <li><strong>Google Analytics:</strong> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color: #7c3aed;">Google Analytics Opt-out Browser Add-on</a></li>
+                    <li><strong>Advertising Cookies:</strong> <a href="http://www.aboutads.info/choices/" target="_blank" style="color: #7c3aed;">Digital Advertising Alliance Opt-out</a></li>
+                    <li><strong>Network Advertising:</strong> <a href="http://www.networkadvertising.org/choices/" target="_blank" style="color: #7c3aed;">Network Advertising Initiative Opt-out</a></li>
+                </ul>
+                
+                <h3>Mobile Device Settings</h3>
+                <p>On mobile devices, you can control tracking through:</p>
+                <ul>
+                    <li><strong>iOS:</strong> Settings > Privacy & Security > Tracking</li>
+                    <li><strong>Android:</strong> Settings > Privacy > Ads</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>Impact of Disabling Cookies:</strong> Please note that disabling certain cookies may affect the functionality of our website and your user experience. Some features may not work properly without cookies enabled.
+                </div>
+            </div>
+        </div>
+
+        <!-- Cookie Settings -->
+        <div class="cookie-settings animate-on-scroll">
+            <div class="cookie-settings-content">
+                <h2><i class="fas fa-cookie-bite"></i> Manage Your Cookie Preferences</h2>
+                <p>You can customize your cookie preferences at any time using the options below:</p>
+                
+                <div style="margin: 2rem 0;">
+                    <a href="#" class="settings-btn" onclick="openCookieSettings()">
+                        <i class="fas fa-cog"></i> Cookie Settings
+                    </a>
+                    <a href="#" class="settings-btn" onclick="acceptAllCookies()">
+                        <i class="fas fa-check"></i> Accept All
+                    </a>
+                    <a href="#" class="settings-btn" onclick="rejectOptionalCookies()">
+                        <i class="fas fa-times"></i> Reject Optional
+                    </a>
+                </div>
+                
+                <p><small>Your preferences will be saved and applied to your future visits to our website.</small></p>
+            </div>
+        </div>
+
+        <!-- Updates to This Policy -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-sync-alt"></i>
+                Updates to This Cookie Policy
+            </h2>
+            <div class="section-content">
+                <p>We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. When we make changes, we will:</p>
+                <ul>
+                    <li>Update the "Last Updated" date at the top of this policy</li>
+                    <li>Notify you of significant changes through our website or email</li>
+                    <li>Provide you with an opportunity to review and accept the updated policy</li>
+                </ul>
+                
+                <p>We encourage you to review this Cookie Policy periodically to stay informed about how we use cookies and how you can manage your preferences.</p>
+                
+                <div class="highlight-box">
+                    <strong>Continued Use:</strong> Your continued use of our website after any changes to this Cookie Policy constitutes your acceptance of the updated policy.
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-section animate-on-scroll">
+            <div class="contact-content">
+                <h2><i class="fas fa-envelope"></i> Questions About Cookies?</h2>
+                <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
+                
+                <div style="margin: 2rem 0;">
+                    <p><strong>MaJe Technologies</strong></p>
+                    <p>Rajkot, Gujarat, India</p>
+                    <p>Phone: <a href="tel:+1234567890">+1234567890</a></p>
+                    <p>Email: majetechnologies@gmail.com</p>
+                </div>
+                
+                <a href="contact.html" class="contact-btn">
+                    <i class="fas fa-paper-plane"></i> Contact Us
+                </a>
+            </div>
+        </div>
+
+        <!-- Last Updated -->
+        <div class="last-updated animate-on-scroll">
+            <p><i class="fas fa-clock"></i> This Cookie Policy was last updated on January 1, 2024</p>
+        </div>
+    </main>
+
+    <script>
+        // Cookie management functions
+        function openCookieSettings() {
+            alert('Cookie settings panel would open here. This would allow users to customize their cookie preferences for different categories.');
+        }
+
+        function acceptAllCookies() {
+            // Set cookie preferences
+            localStorage.setItem('cookiePreferences', JSON.stringify({
+                essential: true,
+                analytics: true,
+                functional: true,
+                marketing: true,
+                timestamp: Date.now()
+            }));
+            alert('All cookies have been accepted. Your preferences have been saved.');
+        }
+
+        function rejectOptionalCookies() {
+            // Set minimal cookie preferences
+            localStorage.setItem('cookiePreferences', JSON.stringify({
+                essential: true,
+                analytics: false,
+                functional: false,
+                marketing: false,
+                timestamp: Date.now()
+            }));
+            alert('Optional cookies have been rejected. Only essential cookies will be used.');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Check for existing cookie preferences
+        window.addEventListener('load', () => {
+            const preferences = localStorage.getItem('cookiePreferences');
+            if (!preferences) {
+                // Show cookie banner or notification for first-time visitors
+                console.log('No cookie preferences found. Consider showing a cookie banner.');
+            }
+        });
+    </script>
+</body>
+</html>

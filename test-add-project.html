@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Add Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .status { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Test Add Project to localStorage</h1>
+    
+    <button onclick="addTestProject()">Add Test Project</button>
+    <button onclick="clearProjects()">Clear All Projects</button>
+    <button onclick="checkProjects()">Check Projects</button>
+    
+    <div id="status" class="status">Ready to test...</div>
+
+    <script>
+        function addTestProject() {
+            const testProject = {
+                id: 'test-project-' + Date.now(),
+                title: 'Test Web Application',
+                description: 'A sample web application project for testing the display functionality.',
+                category: 'web-development',
+                image: 'images/web-project.svg',
+                url: 'https://example.com',
+                createdAt: new Date().toISOString(),
+                technologies: ['HTML', 'CSS', 'JavaScript']
+            };
+            
+            // Get existing projects or create empty array
+            let projects = [];
+            try {
+                const existing = localStorage.getItem('adminProjects');
+                if (existing) {
+                    projects = JSON.parse(existing);
+                }
+            } catch (e) {
+                console.error('Error parsing existing projects:', e);
+            }
+            
+            // Add new project
+            projects.push(testProject);
+            
+            // Save to localStorage
+            localStorage.setItem('adminProjects', JSON.stringify(projects));
+            
+            document.getElementById('status').innerHTML = `
+                <h3>✅ Test project added!</h3>
+                <p><strong>Title:</strong> ${testProject.title}</p>
+                <p><strong>Category:</strong> ${testProject.category}</p>
+                <p><strong>Total projects:</strong> ${projects.length}</p>
+                <p>Now go to the main website to see if it displays in the Our Work section.</p>
+            `;
+        }
+        
+        function clearProjects() {
+            localStorage.removeItem('adminProjects');
+            localStorage.removeItem('projects');
+            document.getElementById('status').innerHTML = '<h3>🗑️ All projects cleared from localStorage</h3>';
+        }
+        
+        function checkProjects() {
+            const adminProjects = localStorage.getItem('adminProjects');
+            const projects = localStorage.getItem('projects');
+            
+            let html = '<h3>📋 Current localStorage status:</h3>';
+            
+            if (adminProjects) {
+                try {
+                    const parsed = JSON.parse(adminProjects);
+                    html += `<p><strong>adminProjects:</strong> ${parsed.length} projects found</p>`;
+                    html += '<ul>';
+                    parsed.forEach((project, index) => {
+                        html += `<li>${index + 1}. ${project.title} (${project.category})</li>`;
+                    });
+                    html += '</ul>';
+                } catch (e) {
+                    html += `<p><strong>adminProjects:</strong> Error parsing - ${e.message}</p>`;
+                }
+            } else {
+                html += '<p><strong>adminProjects:</strong> Not found</p>';
+            }
+            
+            if (projects) {
+                html += `<p><strong>projects:</strong> Found (${projects.length} characters)</p>`;
+            } else {
+                html += '<p><strong>projects:</strong> Not found</p>';
+            }
+            
+            document.getElementById('status').innerHTML = html;
+        }
+        
+        // Check on page load
+        window.addEventListener('load', checkProjects);
+    </script>
+</body>
+</html>

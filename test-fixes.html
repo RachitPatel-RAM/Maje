@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Fixes - MaJe Technologies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .test-pass {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .test-fail {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Error Fixes Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Admin Panel Test</h2>
+        <p><a href="/admin" target="_blank">Open Admin Panel</a></p>
+        <p>Login credentials: ID: admin, Password: admin333@@@</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Main Website Test</h2>
+        <p><a href="/" target="_blank">Open Main Website</a></p>
+    </div>
+
+    <script>
+        // Test basic JavaScript functionality
+        function runTests() {
+            const results = document.getElementById('test-results');
+            const tests = [];
+
+            // Test 1: Basic JavaScript execution
+            try {
+                const testVar = 'test';
+                tests.push({
+                    name: 'Basic JavaScript execution',
+                    passed: testVar === 'test',
+                    error: null
+                });
+            } catch (error) {
+                tests.push({
+                    name: 'Basic JavaScript execution',
+                    passed: false,
+                    error: error.message
+                });
+            }
+
+            // Test 2: Local Storage access
+            try {
+                localStorage.setItem('test', 'value');
+                const value = localStorage.getItem('test');
+                localStorage.removeItem('test');
+                tests.push({
+                    name: 'Local Storage access',
+                    passed: value === 'value',
+                    error: null
+                });
+            } catch (error) {
+                tests.push({
+                    name: 'Local Storage access',
+                    passed: false,
+                    error: error.message
+                });
+            }
+
+            // Test 3: Session Storage access
+            try {
+                sessionStorage.setItem('test', 'value');
+                const value = sessionStorage.getItem('test');
+                sessionStorage.removeItem('test');
+                tests.push({
+                    name: 'Session Storage access',
+                    passed: value === 'value',
+                    error: null
+                });
+            } catch (error) {
+                tests.push({
+                    name: 'Session Storage access',
+                    passed: false,
+                    error: error.message
+                });
+            }
+
+            // Display results
+            results.innerHTML = tests.map(test => `
+                <div class="test-result ${test.passed ? 'test-pass' : 'test-fail'}">
+                    <strong>${test.name}:</strong> 
+                    ${test.passed ? 'PASS' : 'FAIL'}
+                    ${test.error ? ` - ${test.error}` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

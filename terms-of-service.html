@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - MaJe Technologies | Service Agreement & Legal Terms</title>
+    <meta name="description" content="Read MaJe Technologies' Terms of Service. Understand our service agreement, user responsibilities, and legal terms for using our technology solutions.">
+    <meta name="keywords" content="terms of service, service agreement, legal terms, MaJe Technologies, user agreement, technology services">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MaJe Technologies">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Terms of Service - MaJe Technologies">
+    <meta property="og:description" content="Read MaJe Technologies' Terms of Service and understand our service agreement and legal terms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://majetechnologies.com/terms-of-service.html">
+    <meta property="og:image" content="https://majetechnologies.com/logo.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service - MaJe Technologies">
+    <meta name="twitter:description" content="Read MaJe Technologies' Terms of Service and understand our service agreement and legal terms.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Golden Text Selection */
+        ::selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        ::-moz-selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .terms-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: #2563eb;
+            font-size: 1.5rem;
+        }
+
+        .section-content {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .section-content h3 {
+            color: #2d3748;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .section-content ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-content li::marker {
+            color: #2563eb;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '\f06a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            left: -12px;
+            background: #2563eb;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1.5rem;
+            left: -12px;
+            background: #f59e0b;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+                margin: 0 1rem 2rem 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MaJe Technologies</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="terms-icon">
+                <i class="fas fa-file-contract"></i>
+            </div>
+            <h1>Terms of Service</h1>
+            <p>Our service agreement and terms that govern the use of MaJe Technologies services.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-handshake"></i>
+                Agreement to Terms
+            </h2>
+            <div class="section-content">
+                <p>Welcome to MaJe Technologies. These Terms of Service ("Terms") govern your use of our website, services, and products. By accessing or using our services, you agree to be bound by these Terms.</p>
+                
+                <div class="highlight-box">
+                    <strong>Effective Date:</strong> January 1, 2024<br>
+                    <strong>Last Updated:</strong> January 1, 2024
+                </div>
+                
+                <p>If you do not agree to these Terms, please do not use our services. We reserve the right to modify these Terms at any time, and such modifications will be effective immediately upon posting.</p>
+            </div>
+        </div>
+
+        <!-- Services Description -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                Our Services
+            </h2>
+            <div class="section-content">
+                <p>MaJe Technologies provides comprehensive technology solutions including:</p>
+                <ul>
+                    <li><strong>Web Development:</strong> Custom websites, web applications, and e-commerce solutions</li>
+                    <li><strong>Mobile App Development:</strong> iOS and Android applications</li>
+                    <li><strong>AI & Machine Learning:</strong> Intelligent solutions and automation</li>
+                    <li><strong>Digital Marketing:</strong> SEO, social media marketing, and online advertising</li>
+                    <li><strong>Graphic Design:</strong> Branding, UI/UX design, and visual content</li>
+                    <li><strong>Consulting Services:</strong> Technology strategy and digital transformation</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>Service Availability:</strong> While we strive to provide uninterrupted service, we do not guarantee that our services will be available at all times. We may suspend or discontinue services for maintenance, updates, or other operational reasons.
+                </div>
+            </div>
+        </div>
+
+        <!-- User Responsibilities -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-user-check"></i>
+                User Responsibilities
+            </h2>
+            <div class="section-content">
+                <h3>Account Registration</h3>
+                <p>When creating an account with us, you must:</p>
+                <ul>
+                    <li>Provide accurate, current, and complete information</li>
+                    <li>Maintain the security of your account credentials</li>
+                    <li>Promptly update any changes to your information</li>
+                    <li>Accept responsibility for all activities under your account</li>
+                </ul>
+
+                <h3>Acceptable Use</h3>
+                <p>You agree to use our services only for lawful purposes and in accordance with these Terms. You must not:</p>
+                <ul>
+                    <li>Violate any applicable laws or regulations</li>
+                    <li>Infringe on intellectual property rights</li>
+                    <li>Transmit harmful, offensive, or inappropriate content</li>
+                    <li>Attempt to gain unauthorized access to our systems</li>
+                    <li>Interfere with the proper functioning of our services</li>
+                    <li>Use our services for spam or unsolicited communications</li>
+                </ul>
+
+                <h3>Content Responsibility</h3>
+                <p>You are solely responsible for any content you provide to us, including:</p>
+                <ul>
+                    <li>Ensuring you have the right to use and share the content</li>
+                    <li>Compliance with applicable laws and regulations</li>
+                    <li>Accuracy and completeness of information provided</li>
+                    <li>Backup and preservation of your important data</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Payment Terms -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-credit-card"></i>
+                Payment Terms
+            </h2>
+            <div class="section-content">
+                <h3>Pricing and Fees</h3>
+                <p>Our pricing is based on the scope and complexity of services requested. All fees are:</p>
+                <ul>
+                    <li>Quoted in advance and agreed upon before work begins</li>
+                    <li>Subject to applicable taxes and fees</li>
+                    <li>Non-refundable unless otherwise specified</li>
+                    <li>Due according to the payment schedule outlined in your service agreement</li>
+                </ul>
+
+                <h3>Payment Methods</h3>
+                <p>We accept various payment methods including:</p>
+                <ul>
+                    <li>Bank transfers and wire transfers</li>
+                    <li>Credit and debit cards</li>
+                    <li>Digital payment platforms</li>
+                    <li>Cryptocurrency (for select services)</li>
+                </ul>
+
+                <h3>Late Payments</h3>
+                <p>Late payments may result in:</p>
+                <ul>
+                    <li>Suspension of services until payment is received</li>
+                    <li>Late fees as specified in your service agreement</li>
+                    <li>Termination of services for extended non-payment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Intellectual Property -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-copyright"></i>
+                Intellectual Property Rights
+            </h2>
+            <div class="section-content">
+                <h3>Our Intellectual Property</h3>
+                <p>All content, features, and functionality of our services are owned by MaJe Technologies and are protected by:</p>
+                <ul>
+                    <li>Copyright, trademark, and patent laws</li>
+                    <li>International intellectual property treaties</li>
+                    <li>Other proprietary rights laws</li>
+                </ul>
+
+                <h3>Client Intellectual Property</h3>
+                <p>Upon full payment for services, clients retain ownership of:</p>
+                <ul>
+                    <li>Custom code developed specifically for their project</li>
+                    <li>Original content and materials provided by the client</li>
+                    <li>Final deliverables as specified in the service agreement</li>
+                </ul>
+
+                <h3>License to Use</h3>
+                <p>We grant you a limited, non-exclusive license to use our services for their intended purpose. This license does not include the right to:</p>
+                <ul>
+                    <li>Modify, distribute, or create derivative works</li>
+                    <li>Reverse engineer or attempt to extract source code</li>
+                    <li>Remove or alter proprietary notices</li>
+                    <li>Use our services for competitive purposes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Service Level Agreement -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-clock"></i>
+                Service Level Agreement
+            </h2>
+            <div class="section-content">
+                <h3>Project Timelines</h3>
+                <p>We are committed to delivering projects on time and will:</p>
+                <ul>
+                    <li>Provide realistic timelines based on project scope</li>
+                    <li>Communicate any potential delays promptly</li>
+                    <li>Work diligently to meet agreed-upon deadlines</li>
+                    <li>Provide regular progress updates</li>
+                </ul>
+
+                <h3>Support and Maintenance</h3>
+                <p>Our support services include:</p>
+                <ul>
+                    <li>Bug fixes and technical issues resolution</li>
+                    <li>Regular security updates and patches</li>
+                    <li>Performance monitoring and optimization</li>
+                    <li>Documentation and training materials</li>
+                </ul>
+
+                <h3>Response Times</h3>
+                <p>We strive to respond to inquiries within:</p>
+                <ul>
+                    <li><strong>Critical Issues:</strong> Within 4 hours during business days</li>
+                    <li><strong>General Support:</strong> Within 24 hours during business days</li>
+                    <li><strong>Feature Requests:</strong> Within 48 hours during business days</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Limitation of Liability -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                Limitation of Liability
+            </h2>
+            <div class="section-content">
+                <p>To the maximum extent permitted by law, MaJe Technologies shall not be liable for:</p>
+                <ul>
+                    <li>Indirect, incidental, special, or consequential damages</li>
+                    <li>Loss of profits, data, or business opportunities</li>
+                    <li>Damages resulting from third-party services or integrations</li>
+                    <li>Issues arising from client-provided content or specifications</li>
+                    <li>Force majeure events beyond our reasonable control</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>Maximum Liability:</strong> Our total liability for any claim shall not exceed the amount paid by you for the specific service that gave rise to the claim.
+                </div>
+                
+                <h3>Indemnification</h3>
+                <p>You agree to indemnify and hold harmless MaJe Technologies from any claims, damages, or expenses arising from:</p>
+                <ul>
+                    <li>Your use of our services in violation of these Terms</li>
+                    <li>Content you provide that infringes third-party rights</li>
+                    <li>Your negligent or wrongful conduct</li>
+                    <li>Breach of any representation or warranty made by you</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Termination -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-times-circle"></i>
+                Termination
+            </h2>
+            <div class="section-content">
+                <h3>Termination by You</h3>
+                <p>You may terminate your agreement with us at any time by:</p>
+                <ul>
+                    <li>Providing written notice of termination</li>
+                    <li>Completing payment for services already rendered</li>
+                    <li>Following any specific termination procedures in your service agreement</li>
+                </ul>
+
+                <h3>Termination by Us</h3>
+                <p>We may terminate or suspend your access to our services if:</p>
+                <ul>
+                    <li>You breach these Terms or your service agreement</li>
+                    <li>Payment is not received according to agreed terms</li>
+                    <li>You engage in prohibited or harmful activities</li>
+                    <li>We discontinue a particular service</li>
+                </ul>
+
+                <h3>Effect of Termination</h3>
+                <p>Upon termination:</p>
+                <ul>
+                    <li>Your right to use our services will cease immediately</li>
+                    <li>We will provide final deliverables for completed work</li>
+                    <li>Outstanding payments become immediately due</li>
+                    <li>Confidentiality obligations continue to apply</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Privacy and Data Protection -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-user-shield"></i>
+                Privacy and Data Protection
+            </h2>
+            <div class="section-content">
+                <p>Your privacy is important to us. Our collection and use of personal information is governed by our <a href="privacy-policy.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+                
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures to protect your data, including:</p>
+                <ul>
+                    <li>Encryption of data in transit and at rest</li>
+                    <li>Regular security audits and assessments</li>
+                    <li>Access controls and authentication measures</li>
+                    <li>Employee training on data protection</li>
+                </ul>
+
+                <h3>Data Retention</h3>
+                <p>We retain your data only as long as necessary to provide services and comply with legal obligations. You may request deletion of your data subject to our retention policies and legal requirements.</p>
+            </div>
+        </div>
+
+        <!-- Governing Law -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-gavel"></i>
+                Governing Law and Dispute Resolution
+            </h2>
+            <div class="section-content">
+                <h3>Governing Law</h3>
+                <p>These Terms are governed by and construed in accordance with the laws of India, without regard to conflict of law principles.</p>
+
+                <h3>Dispute Resolution</h3>
+                <p>Any disputes arising from these Terms or our services will be resolved through:</p>
+                <ul>
+                    <li><strong>Negotiation:</strong> Good faith discussions to resolve disputes amicably</li>
+                    <li><strong>Mediation:</strong> Binding mediation if negotiation fails</li>
+                    <li><strong>Arbitration:</strong> Final resolution through arbitration in Rajkot, Gujarat, India</li>
+                </ul>
+
+                <h3>Jurisdiction</h3>
+                <p>You agree to submit to the exclusive jurisdiction of the courts in Rajkot, Gujarat, India for any legal proceedings related to these Terms.</p>
+            </div>
+        </div>
+
+        <!-- Miscellaneous -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-list-ul"></i>
+                Miscellaneous
+            </h2>
+            <div class="section-content">
+                <h3>Entire Agreement</h3>
+                <p>These Terms, together with your service agreement and our Privacy Policy, constitute the entire agreement between you and MaJe Technologies.</p>
+
+                <h3>Severability</h3>
+                <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+
+                <h3>Waiver</h3>
+                <p>Our failure to enforce any provision of these Terms does not constitute a waiver of that provision or any other provision.</p>
+
+                <h3>Assignment</h3>
+                <p>You may not assign your rights or obligations under these Terms without our written consent. We may assign our rights and obligations without restriction.</p>
+
+                <h3>Force Majeure</h3>
+                <p>We are not liable for any failure to perform due to circumstances beyond our reasonable control, including natural disasters, government actions, or technical failures.</p>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-section animate-on-scroll">
+            <div class="contact-content">
+                <h2><i class="fas fa-envelope"></i> Questions About These Terms?</h2>
+                <p>If you have any questions about these Terms of Service, please contact us:</p>
+                
+                <div style="margin: 2rem 0;">
+                    <p><strong>MaJe Technologies</strong></p>
+                    <p>Rajkot, Gujarat, India</p>
+                    <p>Phone: <a href="tel:+1234567890">+1234567890</a></p>
+                    <p>Email: majetechnologies@gmail.com</p>
+                </div>
+                
+                <a href="contact.html" class="contact-btn">
+                    <i class="fas fa-paper-plane"></i> Contact Us
+                </a>
+            </div>
+        </div>
+
+        <!-- Last Updated -->
+        <div class="last-updated animate-on-scroll">
+            <p><i class="fas fa-clock"></i> These Terms of Service were last updated on January 1, 2024</p>
+        </div>
+    </main>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - MaJe Technologies | Join Our Team & Build the Future</title>
+    <meta name="description" content="Join MaJe Technologies and build the future of technology. Explore exciting career opportunities, competitive benefits, and a collaborative work environment.">
+    <meta name="keywords" content="careers, jobs, MaJe Technologies, technology careers, software developer, web developer, AI engineer, digital marketing">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MaJe Technologies">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Careers - MaJe Technologies | Join Our Team">
+    <meta property="og:description" content="Join MaJe Technologies and build the future of technology. Explore exciting career opportunities and competitive benefits.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://majetechnologies.com/careers.html">
+    <meta property="og:image" content="https://majetechnologies.com/logo.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Careers - MaJe Technologies | Join Our Team">
+    <meta name="twitter:description" content="Join MaJe Technologies and build the future of technology. Explore exciting career opportunities.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Golden Text Selection */
+        ::selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        ::-moz-selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Back Navigation */
+        .back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(26, 26, 26, 0.9);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 215, 0, 0.9);
+            color: #1a1a1a;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .back-btn i {
+            font-size: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="career-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 0 20 L 20 0 M -5 5 L 5 -5 M 15 25 L 25 15" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23career-pattern)"/></svg>');
+            animation: slide 30s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .career-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem 2rem;
+            margin-top: 0;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: #10b981;
+            font-size: 2rem;
+        }
+
+        /* Why Join Us Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .benefit-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Job Openings */
+        .job-openings {
+            margin: 4rem 0;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #10b981;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .job-tag {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements h4 {
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-requirements ul {
+            color: #4a5568;
+            padding-left: 1.5rem;
+        }
+
+        .job-requirements li {
+            margin-bottom: 0.3rem;
+        }
+
+        .golden-message {
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ffd700);
+            background-size: 200% 200%;
+            animation: goldenShine 3s ease-in-out infinite;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            border: 2px solid #ffd700;
+        }
+
+        .golden-message i {
+            color: #ff6b35;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .golden-message span {
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes goldenShine {
+            0%, 100% {
+                background-position: 0% 50%;
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                background-position: 100% 50%;
+                box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+            }
+        }
+
+        .apply-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #128c7e) !important;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3) !important;
+        }
+
+        /* Application Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            z-index: 1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        /* Culture Section */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .culture-item {
+            background: linear-gradient(135deg, #fef7cd 0%, #fef3c7 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .culture-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .culture-icon {
+            font-size: 2.5rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .culture-item h3 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .culture-item p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 4rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 25s linear infinite reverse;
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+                margin: 0 1rem 2rem 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Navigation -->
+    <div class="back-nav">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="career-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h1>Join Our Team</h1>
+            <p>Build the future of technology with MaJe Technologies. Discover exciting career opportunities and grow with us.</p>
+            <a href="#openings" class="cta-button">
+                <i class="fas fa-search"></i> View Open Positions
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Why Join Us -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                Why Join MaJe Technologies?
+            </h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth Opportunities</h3>
+                    <p>Accelerate your career with continuous learning, mentorship programs, and clear advancement paths in cutting-edge technologies.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaborative Culture</h3>
+                    <p>Work with passionate professionals in a supportive environment that values innovation, creativity, and teamwork.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Latest Technologies</h3>
+                    <p>Work with the latest tools, frameworks, and technologies including AI, machine learning, and cloud computing.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Enjoy flexible working hours, remote work options, and a healthy work-life balance that prioritizes your well-being.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Competitive Benefits</h3>
+                    <p>Comprehensive benefits package including health insurance, performance bonuses, and professional development allowances.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Impact</h3>
+                    <p>Work on projects that make a difference, serving clients worldwide and contributing to meaningful technological solutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Openings -->
+        <div class="content-card animate-on-scroll" id="openings">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i>
+                Current Openings
+            </h2>
+            <div class="job-openings">
+                <!-- Senior Full Stack Developer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior Full Stack Developer</h3>
+                            <div class="job-meta">
+                                <span class="job-tag"><i class="fas fa-map-marker-alt"></i> Rajkot, Gujarat</span>
+                                <span class="job-tag"><i class="fas fa-clock"></i> Full-time</span>
+                                <span class="job-tag"><i class="fas fa-user-tie"></i> Senior Level</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        We're looking for an experienced Full Stack Developer to join our team and lead the development of innovative web applications using modern technologies like React, Node.js, and cloud platforms.
+                    </p>
+                    <div class="job-requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>5+ years of experience in full stack development</li>
+                            <li>Proficiency in React, Node.js, and modern JavaScript</li>
+                            <li>Experience with cloud platforms (AWS, Azure, or GCP)</li>
+                            <li>Strong knowledge of databases (SQL and NoSQL)</li>
+                            <li>Experience with DevOps and CI/CD pipelines</li>
+                        </ul>
+                    </div>
+                    <div class="golden-message">
+                        <i class="fas fa-star"></i>
+                        <span>✨ Not mandatory to have every skill! If you are a master in one skill, then also share your resume - our HR team will connect with you to explore opportunities that match your expertise! ✨</span>
+                    </div>
+                    <a href="https://wa.me/919408272121?text=Hi%20MaJe%20Technologies!%20I%20am%20interested%20in%20applying%20for%20the%20Senior%20Full%20Stack%20Developer%20position.%20Please%20find%20my%20details%20below:" class="apply-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Apply via WhatsApp
+                    </a>
+                </div>
+
+                <!-- AI/ML Engineer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">AI/ML Engineer</h3>
+                            <div class="job-meta">
+                                <span class="job-tag"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <span class="job-tag"><i class="fas fa-clock"></i> Full-time</span>
+                                <span class="job-tag"><i class="fas fa-user-graduate"></i> Mid Level</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Join our AI team to develop cutting-edge machine learning solutions and intelligent systems that solve real-world problems for our clients across various industries.
+                    </p>
+                    <div class="job-requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>3+ years of experience in machine learning and AI</li>
+                            <li>Proficiency in Python, TensorFlow, and PyTorch</li>
+                            <li>Experience with data preprocessing and feature engineering</li>
+                            <li>Knowledge of deep learning and neural networks</li>
+                            <li>Strong mathematical and statistical background</li>
+                        </ul>
+                    </div>
+                    <div class="golden-message">
+                        <i class="fas fa-star"></i>
+                        <span>✨ Not mandatory to have every skill! If you are a master in one skill, then also share your resume - our HR team will connect with you to explore opportunities that match your expertise! ✨</span>
+                    </div>
+                    <a href="https://wa.me/919408272121?text=Hi%20MaJe%20Technologies!%20I%20am%20interested%20in%20applying%20for%20the%20AI/ML%20Engineer%20position.%20Please%20find%20my%20details%20below:" class="apply-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Apply via WhatsApp
+                    </a>
+                </div>
+
+                <!-- Digital Marketing Specialist -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Digital Marketing Specialist</h3>
+                            <div class="job-meta">
+                                <span class="job-tag"><i class="fas fa-map-marker-alt"></i> Rajkot, Gujarat</span>
+                                <span class="job-tag"><i class="fas fa-clock"></i> Full-time</span>
+                                <span class="job-tag"><i class="fas fa-user"></i> Entry Level</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        We're seeking a creative Digital Marketing Specialist to develop and execute comprehensive digital marketing strategies that drive growth and engagement for our clients.
+                    </p>
+                    <div class="job-requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>2+ years of experience in digital marketing</li>
+                            <li>Proficiency in Google Ads, Facebook Ads, and SEO</li>
+                            <li>Experience with analytics tools (Google Analytics, etc.)</li>
+                            <li>Strong content creation and copywriting skills</li>
+                            <li>Knowledge of social media marketing strategies</li>
+                        </ul>
+                    </div>
+                    <div class="golden-message">
+                        <i class="fas fa-star"></i>
+                        <span>✨ Not mandatory to have every skill! If you are a master in one skill, then also share your resume - our HR team will connect with you to explore opportunities that match your expertise! ✨</span>
+                    </div>
+                    <a href="https://wa.me/919408272121?text=Hi%20MaJe%20Technologies!%20I%20am%20interested%20in%20applying%20for%20the%20Digital%20Marketing%20Specialist%20position.%20Please%20find%20my%20details%20below:" class="apply-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Apply via WhatsApp
+                    </a>
+                </div>
+
+                <!-- UI/UX Designer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">UI/UX Designer</h3>
+                            <div class="job-meta">
+                                <span class="job-tag"><i class="fas fa-map-marker-alt"></i> Hybrid</span>
+                                <span class="job-tag"><i class="fas fa-clock"></i> Full-time</span>
+                                <span class="job-tag"><i class="fas fa-user-graduate"></i> Mid Level</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        Join our design team to create beautiful, intuitive, and user-centered designs for web and mobile applications that delight users and drive business success.
+                    </p>
+                    <div class="job-requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>3+ years of experience in UI/UX design</li>
+                            <li>Proficiency in Figma, Adobe Creative Suite, and prototyping tools</li>
+                            <li>Strong understanding of user-centered design principles</li>
+                            <li>Experience with user research and usability testing</li>
+                            <li>Portfolio demonstrating excellent design skills</li>
+                        </ul>
+                    </div>
+                    <div class="golden-message">
+                        <i class="fas fa-star"></i>
+                        <span>✨ Not mandatory to have every skill! If you are a master in one skill, then also share your resume - our HR team will connect with you to explore opportunities that match your expertise! ✨</span>
+                    </div>
+                    <a href="https://wa.me/919408272121?text=Hi%20MaJe%20Technologies!%20I%20am%20interested%20in%20applying%20for%20the%20UI/UX%20Designer%20position.%20Please%20find%20my%20details%20below:" class="apply-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Apply via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Process -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-route"></i>
+                Application Process
+            </h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Apply Online</h3>
+                    <p class="step-description">Submit your application with your resume and cover letter for the position you're interested in.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Initial Screening</h3>
+                    <p class="step-description">Our HR team will review your application and conduct an initial phone or video screening.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Technical Assessment</h3>
+                    <p class="step-description">Complete a technical assessment or portfolio review relevant to your role and expertise.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Team Interview</h3>
+                    <p class="step-description">Meet with the team you'll be working with to discuss your experience and cultural fit.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Final Decision</h3>
+                    <p class="step-description">We'll make our final decision and extend an offer to the successful candidate.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Culture -->
+        <div class="content-card animate-on-scroll">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i>
+                Our Culture & Values
+            </h2>
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <div class="culture-content">
+                        <div class="culture-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation First</h3>
+                        <p>We encourage creative thinking and innovative solutions. Every team member is empowered to contribute ideas and drive positive change.</p>
+                    </div>
+                </div>
+                
+                <div class="culture-item">
+                    <div class="culture-content">
+                        <div class="culture-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>We believe in the power of teamwork. Our collaborative environment fosters knowledge sharing and mutual support.</p>
+                    </div>
+                </div>
+                
+                <div class="culture-item">
+                    <div class="culture-content">
+                        <div class="culture-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Excellence</h3>
+                        <p>We strive for excellence in everything we do, from code quality to client service, always pushing the boundaries of what's possible.</p>
+                    </div>
+                </div>
+                
+                <div class="culture-item">
+                    <div class="culture-content">
+                        <div class="culture-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Growth Mindset</h3>
+                        <p>We invest in our people's growth through continuous learning, training programs, and career development opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section animate-on-scroll">
+            <div class="contact-content">
+                <h2><i class="fas fa-envelope"></i> Ready to Join Our Team?</h2>
+                <p>Don't see a position that fits? We're always looking for talented individuals to join our growing team.</p>
+                
+                <div style="margin: 2rem 0;">
+                    <p><strong>Get in Touch:</strong></p>
+                    <p>Email: majetechnologies@gmail.com</p>
+                    <p>Phone: <a href="tel:+1234567890">+1234567890</a></p>
+                    <p>Location: Rajkot, Gujarat, India</p>
+                </div>
+                
+                <div>
+                    <a href="mailto:majetechnologies@gmail.com?subject=General Career Inquiry" class="contact-btn">
+                        <i class="fas fa-paper-plane"></i> Send Your Resume
+                    </a>
+                    <a href="contact.html" class="contact-btn">
+                        <i class="fas fa-phone"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Job application tracking
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Track application clicks
+                console.log('Application clicked for:', this.closest('.job-card').querySelector('.job-title').textContent);
+            });
+        });
+    </script>
+</body>
+</html>

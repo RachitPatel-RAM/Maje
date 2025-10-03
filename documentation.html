@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - MaJe Technologies | API Docs & Developer Resources</title>
+    <meta name="description" content="Comprehensive documentation for MaJe Technologies APIs, SDKs, and developer resources. Get started with our detailed guides, code examples, and best practices.">
+    <meta name="keywords" content="documentation, API docs, MaJe Technologies, developer resources, SDK, integration guide, code examples">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MaJe Technologies">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Documentation - MaJe Technologies | API Docs & Developer Resources">
+    <meta property="og:description" content="Comprehensive documentation for MaJe Technologies APIs, SDKs, and developer resources.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://majetechnologies.com/documentation.html">
+    <meta property="og:image" content="https://majetechnologies.com/logo.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Documentation - MaJe Technologies | API Docs & Developer Resources">
+    <meta name="twitter:description" content="Comprehensive documentation for MaJe Technologies APIs, SDKs, and developer resources.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Golden Text Selection */
+        ::selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        ::-moz-selection {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="docs-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 0 20 L 20 0 M -5 5 L 5 -5 M 15 25 L 25 15" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23docs-pattern)"/></svg>');
+            animation: slide 30s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .docs-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar h3 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            color: #4a5568;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-nav .sub-nav {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav .sub-nav a {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            color: #1a1a1a;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section h3 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #2d3748;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            background: #4a5568;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* API Cards */
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .api-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #0ea5e9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .api-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .api-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+        }
+
+        .api-card h4 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .api-card p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .method-get {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .method-post {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .method-put {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .method-delete {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fef7cd 0%, #fef3c7 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Quick Start Section */
+        .quick-start {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-start::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 25s linear infinite reverse;
+        }
+
+        .quick-start-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .quick-start h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .quick-start p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .start-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Tables */
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .docs-table th {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .docs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+
+        .docs-table tr:hover {
+            background: #f8fafc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+
+            .main-layout {
+                padding: 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Search Box */
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MaJe Technologies</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="docs-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h1>Documentation</h1>
+            <p>Comprehensive guides, API references, and developer resources to help you integrate with MaJe Technologies.</p>
+        </div>
+    </section>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search documentation..." id="searchInput">
+            </div>
+            
+            <h3><i class="fas fa-list"></i> Contents</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#getting-started" class="active">Getting Started</a></li>
+                <li><a href="#authentication">Authentication</a></li>
+                <li><a href="#api-reference">API Reference</a>
+                    <ul class="sub-nav">
+                        <li><a href="#users-api">Users API</a></li>
+                        <li><a href="#projects-api">Projects API</a></li>
+                        <li><a href="#analytics-api">Analytics API</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sdks">SDKs & Libraries</a></li>
+                <li><a href="#webhooks">Webhooks</a></li>
+                <li><a href="#examples">Code Examples</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Getting Started -->
+            <section id="getting-started" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+                <p>Welcome to MaJe Technologies API documentation. Our APIs are designed to be simple, powerful, and easy to integrate into your applications. This guide will help you get started quickly.</p>
+                
+                <div class="quick-start">
+                    <div class="quick-start-content">
+                        <h3><i class="fas fa-zap"></i> Quick Start</h3>
+                        <p>Get up and running with our API in just a few minutes. Follow these simple steps to make your first API call.</p>
+                        <a href="#authentication" class="start-btn">
+                            <i class="fas fa-play"></i> Start Building
+                        </a>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-info-circle"></i> What You'll Need</h3>
+                <ul style="color: #4a5568; margin-left: 2rem; margin-bottom: 2rem;">
+                    <li>A MaJe Technologies account</li>
+                    <li>API credentials (API key and secret)</li>
+                    <li>Basic knowledge of REST APIs</li>
+                    <li>Your preferred programming language</li>
+                </ul>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Secure & Reliable</h4>
+                            <p>Enterprise-grade security with 99.9% uptime guarantee and robust authentication mechanisms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4>High Performance</h4>
+                            <p>Optimized for speed with global CDN, caching, and efficient data processing capabilities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4>Developer Friendly</h4>
+                            <p>RESTful design, comprehensive documentation, and SDKs for popular programming languages.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Authentication -->
+            <section id="authentication" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-key"></i> Authentication</h2>
+                <p>All API requests require authentication using API keys. You can obtain your API credentials from your dashboard.</p>
+                
+                <h3><i class="fas fa-user-shield"></i> API Key Authentication</h3>
+                <p>Include your API key in the request headers:</p>
+                
+                <div class="code-block" data-language="HTTP">
+                    <code>
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+                    </code>
+                </div>
+
+                <h3><i class="fas fa-code"></i> Example Request</h3>
+                <div class="code-block" data-language="JavaScript">
+                    <code>
+const response = await fetch('https://api.majetechnologies.com/v1/users', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  }
+});
+
+const data = await response.json();
+console.log(data);
+                    </code>
+                </div>
+            </section>
+
+            <!-- API Reference -->
+            <section id="api-reference" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-book"></i> API Reference</h2>
+                <p>Complete reference for all available endpoints, parameters, and response formats.</p>
+
+                <div class="api-grid">
+                    <div class="api-card">
+                        <h4><i class="fas fa-users"></i> Users API</h4>
+                        <span class="method-badge method-get">GET</span>
+                        <p>Manage user accounts, profiles, and authentication. Create, read, update, and delete user data.</p>
+                        <div class="code-block" data-language="Endpoint">
+                            <code>/api/v1/users</code>
+                        </div>
+                    </div>
+                    
+                    <div class="api-card">
+                        <h4><i class="fas fa-project-diagram"></i> Projects API</h4>
+                        <span class="method-badge method-post">POST</span>
+                        <p>Handle project management, creation, and collaboration features for your applications.</p>
+                        <div class="code-block" data-language="Endpoint">
+                            <code>/api/v1/projects</code>
+                        </div>
+                    </div>
+                    
+                    <div class="api-card">
+                        <h4><i class="fas fa-chart-bar"></i> Analytics API</h4>
+                        <span class="method-badge method-get">GET</span>
+                        <p>Access detailed analytics, reports, and insights about your application usage and performance.</p>
+                        <div class="code-block" data-language="Endpoint">
+                            <code>/api/v1/analytics</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users API Details -->
+                <div id="users-api" class="content-section">
+                    <h3><i class="fas fa-users"></i> Users API</h3>
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                                <th>Auth Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="method-badge method-get">GET</span></td>
+                                <td>/api/v1/users</td>
+                                <td>Get all users</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><span class="method-badge method-get">GET</span></td>
+                                <td>/api/v1/users/{id}</td>
+                                <td>Get user by ID</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><span class="method-badge method-post">POST</span></td>
+                                <td>/api/v1/users</td>
+                                <td>Create new user</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><span class="method-badge method-put">PUT</span></td>
+                                <td>/api/v1/users/{id}</td>
+                                <td>Update user</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><span class="method-badge method-delete">DELETE</span></td>
+                                <td>/api/v1/users/{id}</td>
+                                <td>Delete user</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SDKs -->
+            <section id="sdks" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-cube"></i> SDKs & Libraries</h2>
+                <p>Official SDKs and libraries to help you integrate quickly with your preferred programming language.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h4>JavaScript/Node.js</h4>
+                            <p>Full-featured SDK for JavaScript and Node.js applications with TypeScript support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h4>Python</h4>
+                            <p>Pythonic SDK with async support, comprehensive error handling, and detailed documentation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <h4>PHP</h4>
+                            <p>Modern PHP SDK with Composer support, PSR-4 autoloading, and Laravel integration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-download"></i> Installation</h3>
+                <div class="code-block" data-language="npm">
+                    <code>
+# JavaScript/Node.js
+npm install @majetechnologies/sdk
+
+# Python
+pip install majetechnologies-sdk
+
+# PHP
+composer require majetechnologies/sdk
+                    </code>
+                </div>
+            </section>
+
+            <!-- Webhooks -->
+            <section id="webhooks" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-webhook"></i> Webhooks</h2>
+                <p>Set up webhooks to receive real-time notifications about events in your account.</p>
+                
+                <h3><i class="fas fa-bell"></i> Supported Events</h3>
+                <ul style="color: #4a5568; margin-left: 2rem; margin-bottom: 2rem;">
+                    <li><strong>user.created</strong> - When a new user is created</li>
+                    <li><strong>user.updated</strong> - When user data is modified</li>
+                    <li><strong>project.created</strong> - When a new project is created</li>
+                    <li><strong>project.completed</strong> - When a project is marked as complete</li>
+                    <li><strong>payment.successful</strong> - When a payment is processed successfully</li>
+                </ul>
+
+                <div class="code-block" data-language="JSON">
+                    <code>
+{
+  "event": "user.created",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "data": {
+    "user_id": "usr_123456",
+    "email": "user@example.com",
+    "name": "John Doe",
+    "created_at": "2024-01-15T10:30:00Z"
+  }
+}
+                    </code>
+                </div>
+            </section>
+
+            <!-- Code Examples -->
+            <section id="examples" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-code"></i> Code Examples</h2>
+                <p>Practical examples to help you get started quickly with common use cases.</p>
+                
+                <h3><i class="fas fa-user-plus"></i> Creating a User</h3>
+                <div class="code-block" data-language="JavaScript">
+                    <code>
+const MaJeSDK = require('@majetechnologies/sdk');
+
+const client = new MaJeSDK({
+  apiKey: 'your-api-key'
+});
+
+async function createUser() {
+  try {
+    const user = await client.users.create({
+      name: 'John Doe',
+      email: 'john@example.com',
+      role: 'developer'
+    });
+    
+    console.log('User created:', user);
+  } catch (error) {
+    console.error('Error creating user:', error);
+  }
+}
+
+createUser();
+                    </code>
+                </div>
+
+                <h3><i class="fas fa-project-diagram"></i> Fetching Projects</h3>
+                <div class="code-block" data-language="Python">
+                    <code>
+import majetechnologies
+
+client = majetechnologies.Client(api_key='your-api-key')
+
+try:
+    projects = client.projects.list(
+        status='active',
+        limit=10
+    )
+    
+    for project in projects:
+        print(f"Project: {project.name} - Status: {project.status}")
+        
+except majetechnologies.APIError as e:
+    print(f"API Error: {e}")
+                    </code>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <section id="support" class="content-section animate-on-scroll">
+                <h2><i class="fas fa-life-ring"></i> Support</h2>
+                <p>Need help? We're here to assist you with integration, troubleshooting, and best practices.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Email Support</h4>
+                            <p>Get technical support via email. We typically respond within 24 hours.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <h4>Community Discord</h4>
+                            <p>Join our developer community for real-time discussions and peer support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h4>GitHub Issues</h4>
+                            <p>Report bugs, request features, and contribute to our open-source projects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="margin-bottom: 2rem;">Still have questions? Contact our support team:</p>
+                    <a href="mailto:majetechnologies@gmail.com" class="start-btn">
+                        <i class="fas fa-envelope"></i> Contact Support
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sidebar navigation
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+        const sections = document.querySelectorAll('.content-section');
+
+        // Update active link based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for sidebar links
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            contentSections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(searchTerm) || searchTerm === '') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        });
+
+        // Copy code functionality
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.addEventListener('click', function() {
+                const code = this.querySelector('code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    // Show feedback
+                    const originalBg = this.style.background;
+                    this.style.background = '#10b981';
+                    setTimeout(() => {
+                        this.style.background = originalBg;
+                    }, 200);
+                });
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

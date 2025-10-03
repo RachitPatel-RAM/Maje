@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Test</title>
+</head>
+<body>
+    <h1>Firebase Connection Test</h1>
+    <div id="results"></div>
+
+    <!-- Firebase SDK v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ",
+            authDomain: "maje-technologies.firebaseapp.com",
+            databaseURL: "https://maje-technologies-default-rtdb.firebaseio.com",
+            projectId: "maje-technologies",
+            storageBucket: "maje-technologies.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdefghijklmnop"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function testFirebase() {
+            console.log('Testing Firebase...');
+            const resultsDiv = document.getElementById('results');
+            
+            if (typeof firebase !== 'undefined' && firebase.database) {
+                resultsDiv.innerHTML += '<p>✅ Firebase is available</p>';
+                
+                firebase.database().ref('projects').once('value')
+                    .then(snapshot => {
+                        const data = snapshot.val();
+                        console.log('Firebase data:', data);
+                        
+                        if (data) {
+                            const keys = Object.keys(data);
+                            resultsDiv.innerHTML += `<p>✅ Found ${keys.length} projects in Firebase</p>`;
+                            resultsDiv.innerHTML += `<p>Project keys: ${keys.join(', ')}</p>`;
+                        } else {
+                            resultsDiv.innerHTML += '<p>⚠️ No projects found in Firebase</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Firebase error:', error);
+                        resultsDiv.innerHTML += `<p>❌ Firebase error: ${error.message}</p>`;
+                    });
+            } else {
+                resultsDiv.innerHTML += '<p>❌ Firebase not available</p>';
+            }
+        }
+
+        // Test when page loads
+        document.addEventListener('DOMContentLoaded', testFirebase);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Only Test</title>
+</head>
+<body>
+    <h1>Firebase Only Test</h1>
+    <p>Testing only Firebase scripts to isolate syntax error.</p>
+    
+    <!-- Firebase SDK v8 (compatible with global variables) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyD5ypjJ7FfbrWhANRzxImp9g-1C25ii0JY",
+        authDomain: "maje-3dfdf.firebaseapp.com",
+        databaseURL: "https://maje-3dfdf-default-rtdb.firebaseio.com",
+        projectId: "maje-3dfdf",
+        storageBucket: "maje-3dfdf.firebasestorage.app",
+        messagingSenderId: "209651607167",
+        appId: "1:209651607167:web:6391de52ee9543d38cc14a",
+        measurementId: "G-M93JRCSB5C"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const analytics = firebase.analytics();
+      const database = firebase.database();
+      
+      console.log('Firebase initialized successfully');
+    </script>
+</body>
+</html>

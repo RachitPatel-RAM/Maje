@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Projects</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+        .project-card { border: 1px solid #ddd; margin: 10px; padding: 15px; }
+    </style>
+</head>
+<body>
+    <h1>Debug Projects Data</h1>
+    
+    <div class="section">
+        <h2>localStorage Data</h2>
+        <div id="localStorageData"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Processed Projects</h2>
+        <div id="processedProjects"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Test Display</h2>
+        <div id="testDisplay"></div>
+    </div>
+
+    <script>
+        function debugLocalStorage() {
+            const localStorageDiv = document.getElementById('localStorageData');
+            
+            // Check for projects in localStorage
+            const adminProjects = localStorage.getItem('adminProjects');
+            const projects = localStorage.getItem('projects');
+            
+            let html = '<h3>Raw localStorage:</h3>';
+            html += `<p><strong>adminProjects:</strong> ${adminProjects ? 'Found' : 'Not found'}</p>`;
+            html += `<p><strong>projects:</strong> ${projects ? 'Found' : 'Not found'}</p>`;
+            
+            if (adminProjects) {
+                html += '<h4>adminProjects content:</h4>';
+                html += `<pre>${adminProjects}</pre>`;
+                
+                try {
+                    const parsed = JSON.parse(adminProjects);
+                    html += `<p>Parsed successfully. Count: ${Array.isArray(parsed) ? parsed.length : 'Not an array'}</p>`;
+                } catch (e) {
+                    html += `<p style="color: red;">Parse error: ${e.message}</p>`;
+                }
+            }
+            
+            if (projects) {
+                html += '<h4>projects content:</h4>';
+                html += `<pre>${projects}</pre>`;
+            }
+            
+            localStorageDiv.innerHTML = html;
+        }
+        
+        function loadProjectsFromAdmin() {
+            try {
+                const adminProjects = localStorage.getItem('adminProjects');
+                if (adminProjects) {
+                    const projects = JSON.parse(adminProjects);
+                    console.log('Loaded projects from localStorage:', projects);
+                    return Array.isArray(projects) ? projects : [];
+                }
+                return [];
+            } catch (error) {
+                console.error('Error loading projects from admin:', error);
+                return [];
+            }
+        }
+        
+        function testProcessing() {
+            const processedDiv = document.getElementById('processedProjects');
+            const projects = loadProjectsFromAdmin();
+            
+            let html = `<h3>Loaded ${projects.length} projects:</h3>`;
+            
+            projects.forEach((project, index) => {
+                html += `
+                    <div class="project-card">
+                        <h4>Project ${index + 1}</h4>
+                        <p><strong>Title:</strong> ${project.title || 'No title'}</p>
+                        <p><strong>Category:</strong> ${project.category || 'No category'}</p>
+                        <p><strong>Description:</strong> ${project.description || 'No description'}</p>
+                        <p><strong>Image:</strong> ${project.image || 'No image'}</p>
+                        <p><strong>URL:</strong> ${project.url || 'No URL'}</p>
+                        <p><strong>All properties:</strong></p>
+                        <pre>${JSON.stringify(project, null, 2)}</pre>
+                    </div>
+                `;
+            });
+            
+            processedDiv.innerHTML = html;
+            
+            // Test display function
+            testDisplayFunction(projects);
+        }
+        
+        function testDisplayFunction(projects) {
+            const testDiv = document.getElementById('testDisplay');
+            
+            if (projects.length === 0) {
+                testDiv.innerHTML = `
+                    <div class="loading-message">
+                        <p>No projects found for this category.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            function getCategoryDisplayName(category) {
+                return category ? category.split('-').map(word => 
+                    word.charAt(0).toUpperCase() + word.slice(1)
+                ).join(' ') : 'General';
+            }
+            
+            const projectsHTML = projects.map(project => `
+                <div class="project-card" data-category="${project.category || 'general'}">
+                    <div class="project-image">
+                        <img src="${project.image || 'images/web-project.svg'}" alt="${project.title || 'Untitled'}" style="max-width: 200px;">
+                        <div class="project-category">${getCategoryDisplayName(project.category)}</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>${project.title || 'Untitled Project'}</h3>
+                        <p>${project.description || 'No description'}</p>
+                        <a href="${project.url || '#'}" class="project-btn" target="_blank">Visit Project</a>
+                    </div>
+                </div>
+            `).join('');
+            
+            testDiv.innerHTML = '<h3>Rendered Projects:</h3>' + projectsHTML;
+        }
+        
+        // Run debug on page load
+        window.addEventListener('load', () => {
+            debugLocalStorage();
+            testProcessing();
+        });
+    </script>
+</body>
+</html>

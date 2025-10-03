@@ -1,0 +1,37 @@
+{
+  "name": "maje-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for MAJE Technologies project submissions",
+  "main": "telegram-bot.js",
+  "scripts": {
+    "start": "node telegram-bot.js",
+    "dev": "nodemon telegram-bot.js",
+    "old-bot": "node telegram-bot-server.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "firebase-admin": "^11.11.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "maje",
+    "projects",
+    "portfolio",
+    "firebase",
+    "express"
+  ],
+  "author": "MAJE Technologies",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
