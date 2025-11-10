@@ -4037,7 +4037,8 @@
       display: flex;
       gap: 2rem;
       padding: 0 2rem;
-      min-width: max-content;
+      width: 100%;
+      flex-wrap: nowrap;
       overflow-x: auto;
       scrollbar-width: auto; /* Show scrollbar in Firefox */
       -ms-overflow-style: none;
@@ -4057,6 +4058,7 @@
 
     .project-card {
       min-width: 300px;
+      flex: 0 0 auto;
       max-width: 350px;
       background: white;
       border-radius: 24px;
