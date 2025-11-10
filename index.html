@@ -3372,6 +3372,9 @@
       }
     }
 
+    /* Additional Section Mobile Styles */
+    @media (max-width: 768px) {
+
       .cases-grid {
         grid-template-columns: 1fr;
       }
@@ -4036,12 +4039,20 @@
       padding: 0 2rem;
       min-width: max-content;
       overflow-x: auto;
-      scrollbar-width: none;
+      scrollbar-width: auto; /* Show scrollbar in Firefox */
       -ms-overflow-style: none;
     }
 
+    /* Visible horizontal scrollbar for WebKit browsers */
     .projects-grid::-webkit-scrollbar {
-      display: none;
+      height: 8px;
+    }
+    .projects-grid::-webkit-scrollbar-track {
+      background: #eee;
+    }
+    .projects-grid::-webkit-scrollbar-thumb {
+      background: #bbb;
+      border-radius: 4px;
     }
 
     .project-card {
@@ -4373,8 +4384,8 @@
       .projects-grid {
         padding: 0 1rem;
         gap: 1rem;
-        flex-direction: column;
-        align-items: center;
+        /* Keep horizontal layout on mobile */
+        overflow-x: auto;
       }
 
       .project-card {
