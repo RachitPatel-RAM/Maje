@@ -1,0 +1,47 @@
+# MaJe Technologies (majetech.in) - Robots.txt
+# Last updated: 2026-10-23
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /test-*
+Disallow: /debug-*
+Disallow: /*.json$
+
+# Allow important resources
+Allow: /hero.json
+Allow: /projects.json
+
+# Sitemaps
+Sitemap: https://majetech.in/sitemap.xml
+
+# Crawl-delay (be polite to small server)
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /test-*
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /test-*
+
+# AI Crawlers - Allow for GEO optimization
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
