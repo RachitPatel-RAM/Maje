@@ -86,11 +86,14 @@
 <link rel="preconnect" href="https://www.gstatic.com">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-<!-- Google Fonts (Optimized: reduced from 9 to 3 families) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Fonts (Outfit, Plus Jakarta Sans, JetBrains Mono, Inter, Playfair) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Boutique Studio Luxury Stylesheet (two26.studio inspired) -->
+<link rel="stylesheet" href="studio-luxury.css">
 
 <!-- ============================================ -->
 <!-- EXTERNAL SCRIPTS -->
@@ -3546,80 +3549,214 @@
     </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Floating Glass Island Navigation (two26.studio inspired) -->
   <nav class="navbar" id="navbar">
     <div class="navbar-content">
-      <div class="navbar-brand">
+      <a href="index.html" class="navbar-brand">
         <img src="logo.png" alt="MaJe Technologies" class="navbar-logo">
+      </a>
 
+      <!-- Live Studio Project Status -->
+      <div class="studio-status-pill" title="MaJe Studio is currently accepting select Q4/2026 enterprise projects">
+        <span class="pulse-dot"></span>
+        <span>Available for Projects</span>
       </div>
+
       <ul class="navbar-nav">
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Studio</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#our-work">Our Work</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#our-work">Work</a></li>
+        <li><a href="#global-clients">Global Hub</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+      <div class="navbar-cta-group">
+        <a href="https://wa.me/919408272121?text=Hello%20MaJe%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="btn-studio-cta">
+          <i class="fab fa-whatsapp"></i>
+          <span>Let's Talk</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
     <div class="mobile-nav" id="mobileNav">
       <ul class="mobile-nav-list">
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Studio</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#our-work">Our Work</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#our-work">Work</a></li>
+        <li><a href="#global-clients">Global Hub</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Live Clocks & Magnetic Parallax -->
   <section class="hero section" id="hero">
-    <!-- Golden Line -->
-    <div class="golden-line"></div>
-
-    
     <div class="container">
+      <!-- Real-Time Global Studio Clocks -->
+      <div class="global-clocks-bar animate-on-scroll" data-animation="fadeInDown">
+        <div class="clock-item">
+          <span>📍</span>
+          <span class="city-name">Rajkot (HQ):</span>
+          <span class="city-time" id="clock-rajkot">--:--:--</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="clock-item">
+          <span>🗽</span>
+          <span class="city-name">New York:</span>
+          <span class="city-time" id="clock-ny">--:--:--</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="clock-item">
+          <span>🇬🇧</span>
+          <span class="city-name">London:</span>
+          <span class="city-time" id="clock-london">--:--:--</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="clock-item">
+          <span>🇦🇪</span>
+          <span class="city-name">Dubai:</span>
+          <span class="city-time" id="clock-dubai">--:--:--</span>
+        </div>
+      </div>
+
       <div class="hero-content">
         <div class="hero-text">
-          <div class="global-trust-pill animate-on-scroll" data-animation="fadeInDown" style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255, 215, 0, 0.12); border: 1px solid rgba(255, 215, 0, 0.35); border-radius: 30px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #ffd700; backdrop-filter: blur(8px);">
-            <span class="live-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #25D366; box-shadow: 0 0 10px #25D366; display: inline-block;"></span>
-            <span>Global Client Hub: <strong>USA • UK • Australia • Germany • Italy • Monaco • Dubai • India</strong></span>
+          <!-- Global Trust Pill -->
+          <div class="global-trust-pill animate-on-scroll" data-animation="fadeInDown" style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 9999px; padding: 0.45rem 1.1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #fbbf24; backdrop-filter: blur(12px);">
+            <span class="live-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; display: inline-block;"></span>
+            <span>Worldwide Delivery: <strong>USA • UK • Australia • Germany • Italy • Monaco • Dubai • India</strong></span>
           </div>
-          <h1 class="hero-title">
-            <span class="title-line">You think.</span>
-            <span class="title-line">We execute.</span>
-            <span class="title-line highlight">Be with MaJe.</span>
-          </h1>
+
+          <!-- Magnetic Dual Parallax Headline (two26.studio Reverse Engineering) -->
+          <div class="magnetic-headline-wrap" id="magneticHeadline">
+            <h1 class="hero-studio-title">
+              <span class="headline-primary">You think.</span>
+              <span class="headline-primary">We execute.</span>
+              <span class="headline-accent">Be with MaJe.</span>
+            </h1>
+          </div>
+
           <p class="hero-subtitle">
-            Global Full-Stack Web & Mobile App Engineering • 4K Commercial Video Production Shoots • High-ROAS Meta, Google & Telegram Ad Campaigns. Transforming ambitious brands worldwide into digital market leaders.
+            Boutique Digital & Media Studio. We engineer enterprise-grade full-stack web and mobile apps, shoot 4K commercial brand films and anchoring reels, and scale high-ROAS Meta, Google & Telegram ad campaigns worldwide.
           </p>
-          <div class="hero-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-            <a href="#services" class="btn btn-primary">
-              <i class="fas fa-rocket"></i>
-              Our Services
+
+          <div class="hero-buttons">
+            <a href="#services" class="btn-studio-primary">
+              <i class="fas fa-layer-group"></i>
+              <span>Explore Services</span>
             </a>
-            <a href="https://wa.me/919408272121?text=Hello%20MaJe%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25D366; color: #ffffff; padding: 0.9rem 1.6rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">
-              <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
-              WhatsApp Consult
+            <a href="https://wa.me/919408272121?text=Hello%20MaJe%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="btn-studio-whatsapp">
+              <i class="fab fa-whatsapp" style="font-size: 1.15rem;"></i>
+              <span>WhatsApp Consult</span>
             </a>
-            <a href="contact.html" class="btn btn-secondary">
-              <i class="fas fa-paper-plane"></i>
-              Get Free Quote
+            <a href="contact.html" class="btn-studio-glass">
+              <i class="fas fa-arrow-right"></i>
+              <span>Get Free Quote</span>
             </a>
           </div>
         </div>
         
+        <!-- Studio Interactive Dashboard Card -->
         <div class="hero-visual">
-          <div class="lottie-container">
-            <div id="hero-lottie" class="hero-lottie-animation"></div>
+          <div class="hero-interactive-card">
+            <div class="card-ambient-light"></div>
+            
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--studio-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; gap: 6px;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+              </div>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--gold-primary); letter-spacing: 0.05em;">majetech.in // STUDIO ENGINE</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--studio-border); border-radius: 12px; padding: 1rem;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">PERFORMANCE</span>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff;">99.9%</span>
+                <span style="font-size: 0.72rem; color: #22c55e; display: block;">Lighthouse Verified</span>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--studio-border); border-radius: 12px; padding: 1rem;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">CINEMATOGRAPHY</span>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff;">4K Cinema</span>
+                <span style="font-size: 0.72rem; color: var(--gold-primary); display: block;">Brand Shoots & Reels</span>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--studio-border); border-radius: 12px; padding: 1rem;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">AD PERFORMANCE</span>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff;">5.8x</span>
+                <span style="font-size: 0.72rem; color: #38bdf8; display: block;">Average Meta/Google ROAS</span>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--studio-border); border-radius: 12px; padding: 1rem;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">GLOBAL REACH</span>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff;">8+ Hubs</span>
+                <span style="font-size: 0.72rem; color: #a855f7; display: block;">US, UK, UAE, EU, India</span>
+              </div>
+            </div>
+
+            <!-- Tech Badges -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;">
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">Next.js 15</span>
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">React Native</span>
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">4K Cinema Shoots</span>
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">Meta Ads</span>
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">Google PPC</span>
+              <span style="background: rgba(255, 255, 255, 0.06); padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--text-secondary);">Telegram Ads</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Infinite Luxury Studio Marquee Ticker -->
+  <div class="studio-marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item"><span class="marquee-star">★</span> FULL-STACK WEB & CLOUD ENGINEERING</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 4K COMMERCIAL BRAND VIDEO SHOOTS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> ANCHORING & VIRAL REELS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> HIGH-ROAS META & GOOGLE ADS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> TELEGRAM COMMUNITY ACCELERATION</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> LUMINO IO CLOUD SAAS PLATFORM</span>
+      </div>
+      <div class="marquee-content">
+        <span class="marquee-item"><span class="marquee-star">★</span> FULL-STACK WEB & CLOUD ENGINEERING</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 4K COMMERCIAL BRAND VIDEO SHOOTS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> ANCHORING & VIRAL REELS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> HIGH-ROAS META & GOOGLE ADS</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> TELEGRAM COMMUNITY ACCELERATION</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> LUMINO IO CLOUD SAAS PLATFORM</span>
+      </div>
+    </div>
+    <div class="marquee-track reverse">
+      <div class="marquee-content">
+        <span class="marquee-item"><span class="marquee-star">★</span> RAJKOT HQ (GUJARAT)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> NEW YORK (USA)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> LONDON (UK)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> DUBAI (UAE)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> SYDNEY (AUSTRALIA)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> MONACO</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 100% CODE & IP OWNERSHIP</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 4.9/5 RATED STUDIO</span>
+      </div>
+      <div class="marquee-content">
+        <span class="marquee-item"><span class="marquee-star">★</span> RAJKOT HQ (GUJARAT)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> NEW YORK (USA)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> LONDON (UK)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> DUBAI (UAE)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> SYDNEY (AUSTRALIA)</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> MONACO</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 100% CODE & IP OWNERSHIP</span>
+        <span class="marquee-item"><span class="marquee-star">★</span> 4.9/5 RATED STUDIO</span>
+      </div>
+    </div>
+  </div>
 
   <!-- About Section -->
   <section class="about-content" id="about">
@@ -3748,157 +3885,166 @@
   <!-- Services Section -->
   <section class="services-content" id="services">
     <div class="services-grid">
-      <!-- Web Development -->
+      <!-- 01: Web Development -->
       <div class="service-card">
-        <div class="service-icon" style="background: #6366f1;">
+        <span class="service-tag">[01 // WEB & CLOUD SYSTEMS]</span>
+        <div class="service-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3);">
           <i class="fas fa-code"></i>
         </div>
-        <h3>Web Development</h3>
-        <p>Custom websites and web applications built with modern technologies and best practices.</p>
+        <h3>Web & Cloud Systems</h3>
+        <p>Enterprise full-stack web applications, headless architectures, and scalable SaaS platforms built for high performance.</p>
         <ul class="service-features">
-          <li>Responsive Design</li>
-          <li>E-commerce Solutions</li>
-          <li>CMS Development</li>
-          <li>API Integration</li>
-          <li>Performance Optimization</li>
+          <li>Next.js, React & Node.js</li>
+          <li>Enterprise SaaS & APIs</li>
+          <li>Cloudflare & AWS Cloud Deployments</li>
+          <li>Stripe & Global Payment Invoicing</li>
+          <li>Sub-Second Page Load Optimization</li>
         </ul>
-        <a href="#contact" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Explore Architecture &rarr;</a>
       </div>
 
-      <!-- Mobile Development -->
+      <!-- 02: Mobile Development -->
       <div class="service-card">
-        <div class="service-icon" style="background: #10b981;">
+        <span class="service-tag">[02 // MOBILE ENGINEERING]</span>
+        <div class="service-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
           <i class="fas fa-mobile-alt"></i>
         </div>
-        <h3>Mobile Development</h3>
-        <p>Native and cross-platform mobile applications for iOS and Android devices.</p>
+        <h3>Mobile App Development</h3>
+        <p>Native and hybrid iOS & Android mobile applications engineered for smooth 60fps animations and enterprise offline-first capability.</p>
         <ul class="service-features">
-          <li>iOS App Development</li>
-          <li>Android App Development</li>
-          <li>React Native</li>
-          <li>Flutter Development</li>
-          <li>App Store Optimization</li>
+          <li>iOS (Swift) & Android (Kotlin)</li>
+          <li>Cross-Platform React Native & Flutter</li>
+          <li>Biometrics & Secure Token Auth</li>
+          <li>Real-time Push Notifications</li>
+          <li>App Store & Play Store Publishing</li>
         </ul>
-        <a href="#contact" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Build Mobile App &rarr;</a>
       </div>
 
-      <!-- AI & ML -->
+      <!-- 03: AI & Machine Learning -->
       <div class="service-card">
-        <div class="service-icon" style="background: #f59e0b;">
+        <span class="service-tag">[03 // AI & INTELLIGENCE]</span>
+        <div class="service-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);">
           <i class="fas fa-brain"></i>
         </div>
         <h3>AI & Machine Learning</h3>
-        <p>Intelligent solutions powered by artificial intelligence and machine learning algorithms.</p>
+        <p>Bespoke AI model fine-tuning, autonomous conversational agents, and LLM workflow integrations tailored to enterprise operations.</p>
         <ul class="service-features">
-          <li>Chatbot Development</li>
-          <li>Predictive Analytics</li>
-          <li>Computer Vision</li>
-          <li>Natural Language Processing</li>
-          <li>Custom AI Solutions</li>
+          <li>Custom LLM & Agent Pipelines</li>
+          <li>Autonomous Customer Support AI</li>
+          <li>Computer Vision & Document OCR</li>
+          <li>Predictive Analytics Engines</li>
+          <li>Private Cloud AI Deployments</li>
         </ul>
-        <a href="#contact" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Integrate AI Models &rarr;</a>
       </div>
 
-      <!-- Automation -->
+      <!-- 04: Business Automation -->
       <div class="service-card">
-        <div class="service-icon" style="background: #ef4444;">
+        <span class="service-tag">[04 // WORKFLOW AUTOMATION]</span>
+        <div class="service-icon" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">
           <i class="fas fa-robot"></i>
         </div>
-        <h3>Business Automation</h3>
-        <p>Streamline your business processes with intelligent automation solutions.</p>
+        <h3>Intelligent Automation</h3>
+        <p>Eliminate human bottlenecks with bespoke CRM integrations, automated webhook pipelines, and Telegram/WhatsApp bot architectures.</p>
         <ul class="service-features">
-          <li>Workflow Automation</li>
-          <li>Data Processing</li>
-          <li>Integration Solutions</li>
-          <li>Process Optimization</li>
-          <li>Custom Automation Tools</li>
+          <li>Custom CRM & ERP Sync</li>
+          <li>Automated Invoicing & Alerts</li>
+          <li>Multi-System Webhook Pipelines</li>
+          <li>Telegram & WhatsApp Bot Infrastructure</li>
+          <li>End-to-End Operational Efficiency</li>
         </ul>
-        <a href="#contact" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Automate Workflows &rarr;</a>
       </div>
 
-      <!-- Social Media Management -->
+      <!-- 05: Social Media Management -->
       <div class="service-card">
-        <div class="service-icon" style="background: #8b5cf6;">
+        <span class="service-tag">[05 // SOCIAL ECOSYSTEMS]</span>
+        <div class="service-icon" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3);">
           <i class="fas fa-share-alt"></i>
         </div>
-        <h3>Social Media Management</h3>
-        <p>Comprehensive social media strategies to boost your online presence and engagement.</p>
+        <h3>Brand Growth & Social Ecosystems</h3>
+        <p>Data-driven brand positioning and social media community growth across LinkedIn, Instagram, X (Twitter), and YouTube.</p>
         <ul class="service-features">
-          <li>Content Creation</li>
-          <li>Social Media Strategy</li>
-          <li>Community Management</li>
-          <li>Analytics & Reporting</li>
-          <li>Paid Advertising</li>
+          <li>Strategic Content Frameworks</li>
+          <li>High-Retention Daily Storylines</li>
+          <li>Global Influencer Partnerships</li>
+          <li>Audience Community Moderation</li>
+          <li>Monthly Engagement & Growth Reports</li>
         </ul>
-        <a href="#contact" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Elevate Social Brand &rarr;</a>
       </div>
 
-      <!-- Graphic Design -->
+      <!-- 06: Graphic Design -->
       <div class="service-card">
-        <div class="service-icon" style="background: #06b6d4;">
+        <span class="service-tag">[06 // BRAND IDENTITY & UI]</span>
+        <div class="service-icon" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border: 1px solid rgba(6, 182, 212, 0.3);">
           <i class="fas fa-palette"></i>
         </div>
-        <h3>Graphic Design</h3>
-        <p>Creative visual solutions including poster design, festival packages, and daily design services.</p>
+        <h3>Visual Identity & UI Design</h3>
+        <p>World-class design systems, typography guidelines, and digital brand packaging designed to make a luxury first impression.</p>
         <ul class="service-features">
-          <li>Poster Design</li>
-          <li>Festival Packages</li>
-          <li>Daily Design Services</li>
-          <li>Brand Identity</li>
-          <li>Marketing Materials</li>
+          <li>Luxury Brand Design Systems</li>
+          <li>Figma UI/UX Prototypes</li>
+          <li>Marketing & Investor Decks</li>
+          <li>Campaign & Packaging Assets</li>
+          <li>Vector Iconography & Style Guides</li>
         </ul>
-        <a href="contact.html" class="service-btn">Get Started</a>
+        <a href="contact.html" class="service-btn">Request Design Deck &rarr;</a>
       </div>
 
-      <!-- Commercial Video Production -->
-      <div class="service-card">
-        <div class="service-icon" style="background: #e11d48;">
+      <!-- 07: Commercial Video Production -->
+      <div class="service-card" style="border-color: rgba(251, 191, 36, 0.35);">
+        <span class="service-tag">[07 // CINEMATOGRAPHY & VIDEO]</span>
+        <div class="service-icon" style="background: rgba(225, 29, 72, 0.15); color: #fb7185; border: 1px solid rgba(225, 29, 72, 0.3);">
           <i class="fas fa-video"></i>
         </div>
-        <h3>Commercial Video Production</h3>
-        <p>Full-scale commercial advertisement video shoots and cinematic brand films with 4K cinematography, cinema lighting, and color grading.</p>
+        <h3>4K Commercial Brand Films</h3>
+        <p>End-to-end commercial cinema video shoots, multi-camera sets, cinema lighting, studio location shoots, and Davinci Resolve grading.</p>
         <ul class="service-features">
-          <li>4K Multi-Cam Shoots</li>
-          <li>Commercial Ad Production</li>
-          <li>Scriptwriting & Storyboards</li>
-          <li>Location Lighting & Audio</li>
-          <li>Color Grading & Editing</li>
+          <li>4K Cinema Multi-Cam Shoots</li>
+          <li>Commercial TV & Digital Ads</li>
+          <li>Full Scriptwriting & Storyboarding</li>
+          <li>Pro Audio, Lighting & Direction</li>
+          <li>Davinci Resolve Color Grading</li>
         </ul>
-        <a href="contact.html" class="service-btn">Book Video Shoot</a>
+        <a href="contact.html" class="service-btn" style="background: var(--gold-gradient); color: #09090c; font-weight: 700;">Book Cinema Shoot &rarr;</a>
       </div>
 
-      <!-- Anchoring & Viral Reels -->
-      <div class="service-card">
-        <div class="service-icon" style="background: #f59e0b;">
+      <!-- 08: Anchoring & Viral Reels -->
+      <div class="service-card" style="border-color: rgba(251, 191, 36, 0.35);">
+        <span class="service-tag">[08 // PRESENTER REELS]</span>
+        <div class="service-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);">
           <i class="fas fa-microphone-alt"></i>
         </div>
-        <h3>Anchoring & Viral Reels</h3>
-        <p>On-camera presenter anchoring and viral short-form video reels crafted for maximum retention on Instagram & YouTube Shorts.</p>
+        <h3>Presenter Anchoring & Viral Reels</h3>
+        <p>Professional on-camera presenter anchoring and high-retention short-form video reels built to dominate Instagram Reels and YouTube Shorts.</p>
         <ul class="service-features">
-          <li>Presenter-Led Anchoring</li>
-          <li>Viral Hook Scripting</li>
-          <li>Animated Captions & B-Roll</li>
-          <li>Trend Audio Integration</li>
-          <li>High-Converting CTAs</li>
+          <li>Professional On-Camera Anchors</li>
+          <li>3-Second Retention Hook Scripts</li>
+          <li>Kinetic Animated Captions & SFX</li>
+          <li>Algorithmic Sound Sync</li>
+          <li>High-Converting End CTAs</li>
         </ul>
-        <a href="contact.html" class="service-btn">Order Viral Reels</a>
+        <a href="contact.html" class="service-btn" style="background: var(--gold-gradient); color: #09090c; font-weight: 700;">Order Viral Reels &rarr;</a>
       </div>
 
-      <!-- Performance Ads (Meta, Google, Telegram) -->
-      <div class="service-card">
-        <div class="service-icon" style="background: #0ea5e9;">
+      <!-- 09: Performance Ads -->
+      <div class="service-card" style="border-color: rgba(56, 189, 248, 0.35);">
+        <span class="service-tag">[09 // PERFORMANCE ADS]</span>
+        <div class="service-icon" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3);">
           <i class="fas fa-bullhorn"></i>
         </div>
         <h3>Meta, Google & Telegram Ads</h3>
-        <p>High-ROAS paid customer acquisition campaigns combining high-converting video creatives with algorithmic audience targeting.</p>
+        <p>High-ROAS paid acquisition engine combining viral video creatives with machine-learning audience targeting to scale conversions.</p>
         <ul class="service-features">
           <li>Meta Ads (Facebook & Instagram)</li>
           <li>Google Search & Performance Max</li>
           <li>Telegram Sponsored Channels</li>
-          <li>Conversions API & Pixel Tracking</li>
-          <li>Weekly ROAS & Analytics Reports</li>
+          <li>Server-Side Conversions API Tracking</li>
+          <li>Transparent Weekly ROAS Dashboards</li>
         </ul>
-        <a href="contact.html" class="service-btn">Scale Your Ads</a>
+        <a href="contact.html" class="service-btn" style="background: rgba(56, 189, 248, 0.2); border-color: rgba(56, 189, 248, 0.4); color: #ffffff;">Scale Paid Ads &rarr;</a>
       </div>
     </div>
   </section>
@@ -7794,5 +7940,8 @@
       }
     }
   </style>
+
+  <!-- Boutique Studio Interactions (Live Clocks, Magnetic Parallax, Bento Glow) -->
+  <script src="studio-luxury.js" defer></script>
 </body>
 </html>
